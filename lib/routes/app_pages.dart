@@ -1,7 +1,7 @@
-import 'package:flutter_getx_boilerplate/modules/auth/auth.dart';
-import 'package:flutter_getx_boilerplate/modules/home/home.dart';
-import 'package:flutter_getx_boilerplate/modules/me/cards/cards_screen.dart';
-import 'package:flutter_getx_boilerplate/modules/modules.dart';
+import 'package:car_cleaning_demo/modules/auth/auth.dart';
+import 'package:car_cleaning_demo/modules/home/home.dart';
+import 'package:car_cleaning_demo/modules/me/cards/cards_screen.dart';
+import 'package:car_cleaning_demo/modules/modules.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';

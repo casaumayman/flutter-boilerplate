@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/models/response/users_response.dart';
-import 'package:flutter_getx_boilerplate/modules/home/home.dart';
-import 'package:flutter_getx_boilerplate/shared/constants/colors.dart';
+import 'package:car_cleaning_demo/models/response/users_response.dart';
+import 'package:car_cleaning_demo/modules/home/home.dart';
+import 'package:car_cleaning_demo/shared/constants/colors.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';

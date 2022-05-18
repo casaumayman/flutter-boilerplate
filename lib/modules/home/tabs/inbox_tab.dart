@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
-import 'package:flutter_getx_boilerplate/shared/widgets/msg/msg_box.dart';
+import 'package:car_cleaning_demo/shared/shared.dart';
+import 'package:car_cleaning_demo/shared/widgets/msg/msg_box.dart';
 
 class InboxTab extends StatefulWidget {
   const InboxTab({Key? key}) : super(key: key);

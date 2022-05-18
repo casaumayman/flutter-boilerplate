@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/modules/home/home.dart';
-import 'package:flutter_getx_boilerplate/modules/home/tabs/tabs.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:car_cleaning_demo/modules/home/home.dart';
+import 'package:car_cleaning_demo/modules/home/tabs/tabs.dart';
+import 'package:car_cleaning_demo/shared/shared.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

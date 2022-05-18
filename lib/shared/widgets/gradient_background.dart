@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 

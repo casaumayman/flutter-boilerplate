@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter_getx_boilerplate/api/api.dart';
-import 'package:flutter_getx_boilerplate/models/response/users_response.dart';
-import 'package:flutter_getx_boilerplate/modules/home/home.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:car_cleaning_demo/api/api.dart';
+import 'package:car_cleaning_demo/models/response/users_response.dart';
+import 'package:car_cleaning_demo/modules/home/home.dart';
+import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,5 +1,5 @@
-import 'package:flutter_getx_boilerplate/api/base_provider.dart';
-import 'package:flutter_getx_boilerplate/models/models.dart';
+import 'package:car_cleaning_demo/api/base_provider.dart';
+import 'package:car_cleaning_demo/models/models.dart';
 import 'package:get/get.dart';
 
 class ApiProvider extends BaseProvider {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/models/bank_card.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
-import 'package:flutter_getx_boilerplate/shared/widgets/focused_menu/focused_menu_holder.dart';
+import 'package:car_cleaning_demo/models/bank_card.dart';
+import 'package:car_cleaning_demo/shared/shared.dart';
+import 'package:car_cleaning_demo/shared/widgets/focused_menu/focused_menu_holder.dart';
 
 import 'bank_card_box.dart';
 
