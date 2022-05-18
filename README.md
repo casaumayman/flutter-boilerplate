@@ -1,11 +1,3 @@
-# flutter_getx_boilerplate
-
-**Languages: English (this file), [中文](README.zh-cn.md).**
-
-## Introduction
-
-During my study of Flutter, I have been using the flutter_bloc state management framework. I accidentally saw the GetX state management framework. Through ReadMe, I found that the GetX framework is very easy to get started. So I want to write a GetX Starter project while learning, which can not only help myself Learning can also help others quickly build a boilerplate. Before building this boilerplate, I searched many similar projects, and found that they were relatively simple, and none of them covered the common things that the project should have, so I sprouted the idea of ​​writing one by myself. Let me introduce them one by one below.
-
 ## Technology & Project Introduction
 
 Use Flutter 2.x to build a set of features containing predefined folder structure, style themes, API access, state management, routing & dependencies, etc. The project structure is clear and can be easily used as a Flutter template project. Technologies used include but are not limited to [Flutter](https://flutter.cn/), [Dart](https://dart.dev/), [GetX](https://pub.dev/packages/get), etc.
@@ -29,7 +21,7 @@ Use Flutter 2.x to build a set of features containing predefined folder structur
 Fork this project to your own warehouse:
 
 ```
-git clone https://github.com/KevinZhang19870314/flutter_getx_boilerplate.git
+git clone https://gitlab.com/c8684/car_cleaning_demo_flutter.git
 ```
 
 **Step 2:**
