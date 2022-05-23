@@ -67,6 +67,7 @@ class AuthController extends GetxController {
       if (res!.token.isNotEmpty) {
         prefs.setString(StorageConstants.token, res.token);
         Get.toNamed(Routes.HOME);
+
       }
     }
   }
