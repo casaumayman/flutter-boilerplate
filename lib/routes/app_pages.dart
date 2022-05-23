@@ -1,8 +1,11 @@
 import 'package:car_cleaning_demo/modules/auth/auth.dart';
+import 'package:car_cleaning_demo/modules/calendar/calendar_binding.dart';
 import 'package:car_cleaning_demo/modules/home/home.dart';
 import 'package:car_cleaning_demo/modules/me/cards/cards_screen.dart';
 import 'package:car_cleaning_demo/modules/modules.dart';
 import 'package:get/get.dart';
+
+import '../modules/calendar/calendar_home.dart';
 
 part 'app_routes.dart';
 
@@ -30,5 +33,10 @@ class AppPages {
         children: [
           GetPage(name: Routes.CARDS, page: () => CardsScreen()),
         ]),
+
+    GetPage(
+        name: Routes.CALENDAR_HOME,
+        binding: CalendarBinding(),
+        page: ()=>CalendarHome())
   ];
 }
