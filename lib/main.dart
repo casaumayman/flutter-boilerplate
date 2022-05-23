@@ -28,7 +28,7 @@ class App extends StatelessWidget {
       getPages: AppPages.routes,
       initialBinding: AppBinding(),
       smartManagement: SmartManagement.keepFactory,
-      title: 'Flutter GetX Boilerplate',
+      title: 'Car cleaning demo',
       theme: ThemeConfig.lightTheme,
       locale: TranslationService.locale,
       fallbackLocale: TranslationService.fallbackLocale,
