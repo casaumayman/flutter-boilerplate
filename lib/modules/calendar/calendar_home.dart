@@ -1,4 +1,6 @@
+import 'package:car_cleaning_demo/modules/calendar/calendar_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CalendarHome extends StatefulWidget {
   const CalendarHome({Key? key}) : super(key: key);
@@ -8,6 +10,12 @@ class CalendarHome extends StatefulWidget {
 }
 
 class _CalendarHomeState extends State<CalendarHome> {
+
+  static const CHANNEL = "com.example.car_cleaning_demo_flutter";
+  static const KEY_NATIVE = "showNativeView";
+  // final CalendarController controller = Get.arguments;
+  CalendarController controller = Get.find<CalendarController>();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -103,13 +111,18 @@ class _CalendarHomeState extends State<CalendarHome> {
            ),
          borderRadius: BorderRadius.circular(8.0)
        ),
-       child: Column(
-         mainAxisAlignment: MainAxisAlignment.center,
-         crossAxisAlignment: CrossAxisAlignment.center,
-         children: [
-           Text("11/3(金)"),
-           Text("17:00-17:30"),
-         ],
+       child: InkWell(
+         onTap: (){
+          controller.showNativeView();
+         },
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             Text("11/3(金)"),
+             Text("17:00-17:30"),
+           ],
+         ),
        ),
      );
   }
