@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class CalendarController extends GetxController{
-
+class CalendarController extends GetxController {
   static const platform = MethodChannel(Constrains.CHANNEL);
   @override
   void onInit() {
@@ -15,7 +14,8 @@ class CalendarController extends GetxController{
   void onReady() {
     super.onReady();
   }
-  Future<void> showMyDialog(context,message) async {
+
+  Future<void> showMyDialog(context, message) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -24,9 +24,15 @@ class CalendarController extends GetxController{
           title: const Text('Notification has data'),
           content: SingleChildScrollView(
             child: ListBody(
-              children:  <Widget>[
+              children: <Widget>[
                 Text('This is data scan nfc'),
-                Text(message,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                Text(
+                  message,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
@@ -42,8 +48,8 @@ class CalendarController extends GetxController{
       },
     );
   }
-  Future<Null> showNativeView() async {
 
+  Future<Null> showNativeView() async {
     await platform.invokeMethod(Constrains.KEY_NATIVE);
   }
 
@@ -54,14 +60,14 @@ class CalendarController extends GetxController{
         return Future.value("");
     }
   }
+
   Future<String> _getMessage() async {
-    var sendMap = <String, dynamic> {
-      'from' : 'Brandon',
+    var sendMap = <String, dynamic>{
+      'from': 'Brandon',
     };
     String? value;
     try {
       value = await platform.invokeMethod('getDataNfc', sendMap);
-
     } catch (e) {
       print(e);
     }
