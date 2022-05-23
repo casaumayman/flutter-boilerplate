@@ -27,7 +27,6 @@ class AppPages {
     GetPage(
         name: Routes.HOME,
         page: () => HomeScreen(),
-        binding: HomeBinding(),
         children: [
           GetPage(name: Routes.CARDS, page: () => CardsScreen()),
         ]),
