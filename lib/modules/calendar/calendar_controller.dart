@@ -15,36 +15,12 @@ class CalendarController extends GetxController {
     super.onReady();
   }
 
-  Future<void> showMyDialog(context, message) async {
+  Future<void> showMyDialog(context, message,alertDialog) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Notification has data'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('This is data scan nfc'),
-                Text(
-                  message,
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Close  '),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        return alertDialog;
       },
     );
   }
