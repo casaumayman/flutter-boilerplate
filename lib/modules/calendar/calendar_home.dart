@@ -2,19 +2,11 @@ import 'package:car_cleaning_demo/modules/calendar/calendar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CalendarHome extends StatefulWidget {
-  const CalendarHome({Key? key}) : super(key: key);
-
-  @override
-  State<CalendarHome> createState() => _CalendarHomeState();
-}
-
-class _CalendarHomeState extends State<CalendarHome> {
+class CalendarHome extends GetView<CalendarController> {
 
   static const CHANNEL = "com.example.car_cleaning_demo_flutter";
   static const KEY_NATIVE = "showNativeView";
   // final CalendarController controller = Get.arguments;
-  CalendarController controller = Get.find<CalendarController>();
 
   @override
   Widget build(BuildContext context) {
