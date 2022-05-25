@@ -3,14 +3,14 @@ import 'package:car_cleaning_demo/modules/home/home.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
           child: Column(
         children: [
-          Text("This is Json data ${controller.nfcJson}"),
+          Text("This is Json data"),
           OutlinedButton(
               onPressed: () async {
                 const platform = MethodChannel('scan_NFC');

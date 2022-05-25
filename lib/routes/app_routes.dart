@@ -9,4 +9,5 @@ abstract class Routes {
   static const CARDS = '/cards';
   static const CALENDAR = '/calendar';
   static const CALENDAR_HOME = '/calendar_home';
+  static const TEST_NFC = '/test_nfc';
 }

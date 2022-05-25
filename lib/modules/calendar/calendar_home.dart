@@ -1,86 +1,92 @@
 import 'package:car_cleaning_demo/modules/calendar/calendar_controller.dart';
+import 'package:car_cleaning_demo/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CalendarHome extends StatefulWidget {
-  const CalendarHome({Key? key}) : super(key: key);
+class CalendarHome extends GetView<CalendarController> {
+  static const CHANNEL = "com.example.car_cleaning_demo_flutter";
+  static const KEY_NATIVE = "showNativeView";
 
-  @override
-  State<CalendarHome> createState() => _CalendarHomeState();
-}
-
-class _CalendarHomeState extends State<CalendarHome> {
-  CalendarController controller = Get.find<CalendarController>();
+  // final CalendarController controller = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: width,
+                  height: height * 0.4,
+                  child: Image.asset(
+                    "assets/images/top_img.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                Text(
+                  "水なし洗車（仮",
+                  style: TextStyle(color: Color(0xfff9c104), fontSize: 30.0),
+                )
+              ],
+            ),
+            Container(
                 width: width,
-                height: height*0.4,
-                child: Image.asset(
-                    "assets/images/car.png",fit: BoxFit.fill,),
-              ),
-              Text(
-                "水なし洗車（仮",
-                style: TextStyle(color: Color(0xfff9c104), fontSize: 30.0),
-              )
-            ],
-          ),
-          Container(
-              width: width,
-              decoration: borderBox(),
-              child: Column(
-                children: [
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(),
-                      ),
-                      Container(child: buildBigText("予約する")),
-                      Expanded(
-                        child: Container(
-                          child: Image.asset('assets/images/logo.png'),
-                        ),
-                      ),
-                    ],
-                  ),
-                  buildLine(width),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: buildBigText("予約する")),
-                      buildBoxText()
-                    ],
-                  ),
-                  buildLine(width),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: buildBigText("お知らせ")),
-                      buildNewsBox()
-                    ],
-                  ),
-                  buildLine(width),
-                  buildExplain(),
-                  buildLine(width),
-                  buildBigText("アプリの使い方ガイド")
-                ],
-              ))
-        ],
+                decoration: borderBox(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.TEST_NFC);
+                        },
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(),
+                            ),
+                            Container(child: buildBigText("予約する")),
+                            Expanded(
+                              child: Container(
+                                child: Image.asset('assets/images/logo.png'),
+                              ),
+                            ),
+                          ],
+                        )),
+                    buildLine(width),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: buildBigText("予約する")),
+                        buildBoxText()
+                      ],
+                    ),
+                    buildLine(width),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: buildBigText("お知らせ")),
+                        buildNewsBox()
+                      ],
+                    ),
+                    buildLine(width),
+                    buildExplain(),
+                    buildLine(width),
+                    buildBigText("アプリの使い方ガイド")
+                  ],
+                ))
+          ],
+        ),
       ),
     );
   }
@@ -110,7 +116,7 @@ class _CalendarHomeState extends State<CalendarHome> {
           borderRadius: BorderRadius.circular(8.0)),
       child: InkWell(
         onTap: () {
-          controller.showNativeView();
+          // controller.showNativeView();
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

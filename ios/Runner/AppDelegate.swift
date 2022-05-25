@@ -1,8 +1,11 @@
 import UIKit
 import Flutter
 
+@available(iOS 13.0, *)
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
+  let scanner = NFCReader()
+    
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -10,7 +13,7 @@ import Flutter
       let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
       let scanNFCChannel = FlutterMethodChannel(name: "com.example.car_cleaning_demo_flutter.chanel",
                                                 binaryMessenger: controller.binaryMessenger)
-      scanNFCChannel.setMethodCallHandler({
+      scanNFCChannel.setMethodCallHandler({ [self]
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
           switch call.method {
           case "TEST_COMMUNICATE":
@@ -22,18 +25,14 @@ import Flutter
               result(FlutterError(code: "SCAN_NFC", message: "Invalid format", details: nil))
           case "SCAN_NFC":
               if let params = call.arguments as? Dictionary<String, String> {
-                  if #available(iOS 13.0, *) {
-                      let pin1 = params["pin1"] ?? ""
-                      let pin2 = params["pin2"] ?? ""
-                      if (pin1.isEmpty && pin2.isEmpty) {
-                          result(FlutterError(code: "SCAN_NFC", message: "Invalid format", details: nil))
-                          return
-                      }
-                      let scanner = NFCReader(pin1input: pin1, pin2input: pin2, call: call, result: result)
-                      scanner.scanRequest()
-                  } else {
-                      result(FlutterError(code: "SCAN_NFC", message: "iOS 13+ is required", details: nil))
+                  let pin1 = params["pin1"] ?? ""
+                  let pin2 = params["pin2"] ?? ""
+                  if (pin1.isEmpty && pin2.isEmpty) {
+                      result(FlutterError(code: "SCAN_NFC", message: "Invalid format", details: nil))
+                      return
                   }
+                  self.scanner.setEnviroment(pin1input: pin1, pin2input: pin2, call: call, result: result)
+                  self.scanner.scanRequest()
                   return
               }
               result(FlutterError(code: "SCAN_NFC", message: "Invalid format", details: nil))

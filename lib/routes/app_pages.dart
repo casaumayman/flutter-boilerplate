@@ -3,6 +3,7 @@ import 'package:car_cleaning_demo/modules/calendar/calendar_binding.dart';
 import 'package:car_cleaning_demo/modules/home/home.dart';
 import 'package:car_cleaning_demo/modules/me/cards/cards_screen.dart';
 import 'package:car_cleaning_demo/modules/modules.dart';
+import 'package:car_cleaning_demo/modules/test_nfc/test_nfc.dart';
 import 'package:get/get.dart';
 
 import '../modules/calendar/calendar_home.dart';
@@ -28,15 +29,12 @@ class AppPages {
       ],
     ),
     GetPage(
-        name: Routes.HOME,
-        page: () => HomeScreen(),
-        children: [
-          GetPage(name: Routes.CARDS, page: () => CardsScreen()),
-        ]),
-
-    GetPage(
         name: Routes.CALENDAR_HOME,
         binding: CalendarBinding(),
-        page: ()=>CalendarHome())
+        page: () => CalendarHome()),
+    GetPage(
+        name: Routes.TEST_NFC,
+        page: () => TestNFCScreen(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => TestNFCController()))),
   ];
 }

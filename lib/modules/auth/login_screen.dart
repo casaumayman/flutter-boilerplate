@@ -6,6 +6,7 @@ import 'auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final AuthController controller = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return Stack(

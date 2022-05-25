@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:car_cleaning_demo/shared/utils/constains.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +28,14 @@ class CalendarController extends GetxController {
   }
 
   Future<Null> showNativeView() async {
-    await platform.invokeMethod(Constrains.KEY_NATIVE);
+    try {
+      final res = await platform.invokeMethod<String>(Constrains.KEY_NATIVE, <String, String> {
+        "pin1": "352445",
+      });
+      print("response from swift: ${res}");
+    } on Exception catch (error) {
+      print("error from swift ${error}");
+    }
   }
 
   Future<dynamic> _handleMethod(MethodCall call) async {

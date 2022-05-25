@@ -14,12 +14,16 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
     
     let DPIN = "****"
     var session: NFCTagReaderSession?
-    private var pin1: String
-    private var pin2: String
-    private let call: FlutterMethodCall
-    private let result: FlutterResult
+    private var pin1: String?
+    private var pin2: String?
+    private var call: FlutterMethodCall?
+    private var result: FlutterResult?
     
-    init(pin1input: String, pin2input: String, call: FlutterMethodCall, result: @escaping FlutterResult){
+    override init() {
+        
+    }
+    
+    public func setEnviroment(pin1input: String, pin2input: String, call: FlutterMethodCall, result: @escaping FlutterResult) {
         pin1 = pin1input
         pin2 = pin2input
         self.call = call
@@ -27,7 +31,7 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
     }
     
     private func responseError(message: String) {
-        self.result(FlutterError(code: "SCAN_NFC", message: message, details: nil))
+        self.result?(FlutterError(code: "SCAN_NFC", message: message, details: nil))
     }
     
     public func scanRequest() {
@@ -54,14 +58,12 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
                 print("tagReaderSession error: " + nfcError.localizedDescription)
                 print("エラー: " + nfcError.localizedDescription)
                 responseError(message: nfcError.localizedDescription)
-                if nfcError.code == .readerSessionInvalidationErrorSessionTerminatedUnexpectedly {
-                    responseError(message: "しばらく待ってから再度お試しください")
-                }
             }
         } else {
             responseError(message: error.localizedDescription)
             print("tagReaderSession error: " + error.localizedDescription)
         }
+        responseError(message: error.localizedDescription)
         self.session = nil
     }
     
@@ -101,7 +103,7 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
                         self.pin1 = self.DPIN
                     }
                     session.alertMessage = "\(msgReadingHeader)暗証番号1による認証..."
-                    try ap.verifyPin1(self.pin1)
+                    try ap.verifyPin1(self.pin1!)
                     session.alertMessage += "成功"
                 } catch let jeidError as JeidError {
                     switch jeidError {
@@ -119,7 +121,7 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
                         self.pin2 = self.DPIN
                     }
                     session.alertMessage = "\(msgReadingHeader)暗証番号2による認証..."
-                    try ap.verifyPin2(self.pin2)
+                    try ap.verifyPin2(self.pin2!)
                     session.alertMessage += "成功"
                 } catch let jeidError as JeidError {
                     switch jeidError {
@@ -148,7 +150,12 @@ class NFCReader: NSObject, NFCTagReaderSessionDelegate {
                     "licenseNumber": entries.licenseNumber ?? "",
                     "changedEntries": changedEntries.description
                 ]
-                self.result(dataResponse)
+                if let jsonData = try? JSONSerialization.data(withJSONObject: dataResponse, options: []) {
+                    let jsonString = String(data: jsonData, encoding: .utf8)
+                    self.result?(jsonString)
+                } else {
+                    self.responseError(message: "Cannot serialize data")
+                }
             } catch {
                 session.invalidate(errorMessage: session.alertMessage + "失敗")
             }
