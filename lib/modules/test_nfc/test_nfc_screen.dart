@@ -50,7 +50,14 @@ class TestNFCScreen extends GetView<TestNFCController> {
                               ],
                               crossAxisAlignment: CrossAxisAlignment.center,
                             ))),
-                        Center(child: CircularProgressIndicator())
+                        Center(child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CircularProgressIndicator(),
+                            SizedBox(height: 10.0,),
+                            Text("Đang chờ đọc thẻ...",style: TextStyle(fontSize: 15.0),)
+                          ],
+                        ))
                       ],
                     )
                   : Center(

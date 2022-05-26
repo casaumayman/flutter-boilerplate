@@ -155,14 +155,14 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, getClass().getSimpleName() + "#onResume()");
+        Log.d(TAG, getClass().getSimpleName() + "#RunonResume()");
         super.onResume();
 
         invalidateOptionsMenu();
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
-            return;
+            return ;
         }
 
         if (this.nfcMode == NFC_READER_MODE) {
