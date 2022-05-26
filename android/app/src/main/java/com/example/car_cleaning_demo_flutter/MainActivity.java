@@ -35,7 +35,8 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
 import jp.co.osstech.libjeid.InvalidPinException;
 
-public class MainActivity extends FlutterActivity implements TagDiscoveredListener{
+public class MainActivity extends FlutterActivity implements TagDiscoveredListener
+{
     public static final String CHANNEL = "com.example.car_cleaning_demo_flutter.chanel";
     public static final String KEY_NATIVE = "SCAN_NFC";
 
@@ -59,6 +60,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     static String pin2 = "";
 
     String myData="";
+
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
@@ -75,7 +77,9 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 //                                res.put("pin2", "NGUYEN VAN B");
 
                                 String jsonString = new JSONObject(hashMap).toString();
+                                result.error("",myData,null);
                                 result.success(jsonString);
+
                             }
                             else {
                                 result.notImplemented();
@@ -97,10 +101,12 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
         super.onNewIntent(intent);
+        Log.d("onNewIntent","onNewIntent");
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         this.onTagDiscovered(tag);
     }
     public void onTagDiscovered(final Tag tag) {
+        Log.d("onTagDiscovered","onTagDiscovered");
         DLReaderTask task = new DLReaderTask(MainActivity.this, tag);
         ExecutorService exec = Executors.newSingleThreadExecutor();
         exec.submit(task);
@@ -120,6 +126,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
             title = name + "が間違っています";
             msg = name + "を正しく入力してください。";
             msg += "のこり" + counter + "回間違えるとブロックされます。";
+
         }
         print(title);
         print(msg);
@@ -182,7 +189,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
             if (!this.enableNFC) {
                 return;
             }
-            Intent intent = new Intent(this, this.getClass());
+            Intent intent = new Intent(this, getClass());
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
             String[][] techLists = new String[][]{
@@ -238,7 +245,6 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 
     protected void print(String msg) {
         Handler handler = new Handler(Looper.getMainLooper());
-
         handler.post(new Runnable() {
             @Override
             public void run() {

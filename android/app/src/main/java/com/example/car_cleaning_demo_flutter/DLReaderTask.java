@@ -73,8 +73,10 @@ public class DLReaderTask implements Runnable {
 
 //        publishProgress("# 読み取り開始、カードを離さないでください");
         // 読み取り中ダイアログを表示
-//       ProgressDialogFragment progress = new ProgressDialogFragment();
+//        ProgressDialogFragment progress = new ProgressDialogFragment();
 //        progress.show(activity., "progress");
+//
+
 
 
         ProgressDialog progressdialog = new ProgressDialog(activity);
@@ -354,7 +356,7 @@ public class DLReaderTask implements Runnable {
 //            activity.startActivity(intent);
         } catch (Exception e) {
             Log.e(TAG, "error", e);
-//            publishProgress("エラー: " + e);
+            publishProgress("エラー: " + e);
         } finally {
              progressdialog.dismiss();
 //            progress.dismissAllowingStateLoss();
