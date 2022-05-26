@@ -25,8 +25,10 @@ class TestNFCController extends GetxController {
         "pin2": pin2.value
       };
       var dataRes = await platform.invokeMethod<String>("SCAN_NFC", requestData);
-      print(dataRes);
-      data.value = dataRes ?? "";
+      print("data $dataRes + ${dataRes?.length.toString()}");
+
+      dataRes?.length==2 || data.value==null ? data.value="No data" : data.value=dataRes!;
+      // data.value = dataRes ?? "";
       stopLoading();
       return;
     } catch (error) {

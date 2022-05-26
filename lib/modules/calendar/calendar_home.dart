@@ -7,7 +7,6 @@ class CalendarHome extends GetView<CalendarController> {
   static const CHANNEL = "com.example.car_cleaning_demo_flutter";
   static const KEY_NATIVE = "showNativeView";
 
-  // final CalendarController controller = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +113,7 @@ class CalendarHome extends GetView<CalendarController> {
             width: 1,
           ),
           borderRadius: BorderRadius.circular(8.0)),
-      child: InkWell(
+        child: InkWell(
         onTap: () {
           // controller.showNativeView();
         },
