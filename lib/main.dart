@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:get/get.dart';
 
 import 'app_binding.dart';

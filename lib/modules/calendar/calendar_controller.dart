@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:car_cleaning_demo/shared/utils/constains.dart';
 import 'package:flutter/material.dart';
@@ -38,25 +38,25 @@ class CalendarController extends GetxController {
     }
   }
 
-  Future<dynamic> _handleMethod(MethodCall call) async {
-    switch (call.method) {
-      case "message":
-        debugPrint(call.arguments);
-        return Future.value("");
-    }
-  }
+  // Future<dynamic> _handleMethod(MethodCall call) async {
+  //   switch (call.method) {
+  //     case "message":
+  //       debugPrint(call.arguments);
+  //       return Future.value("");
+  //   }
+  // }
 
-  Future<String> _getMessage() async {
-    var sendMap = <String, dynamic>{
-      'from': 'Brandon',
-    };
-    String? value;
-    try {
-      value = await platform.invokeMethod('getDataNfc', sendMap);
-    } catch (e) {
-      print(e);
-    }
-
-    return value!;
-  }
+  // Future<String> _getMessage() async {
+  //   var sendMap = <String, dynamic>{
+  //     'from': 'Brandon',
+  //   };
+  //   String? value;
+  //   try {
+  //     value = await platform.invokeMethod('getDataNfc', sendMap);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //
+  //   return value!;
+  // }
 }

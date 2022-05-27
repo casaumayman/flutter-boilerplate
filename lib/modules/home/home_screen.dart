@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:car_cleaning_demo/modules/home/home.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

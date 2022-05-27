@@ -1,7 +1,5 @@
 import 'package:car_cleaning_demo/routes/routes.dart';
-import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
   @override
@@ -9,7 +7,7 @@ class SplashController extends GetxController {
     super.onReady();
 
     await Future.delayed(Duration(milliseconds: 2000));
-    var storage = Get.find<SharedPreferences>();
+    // var storage = Get.find<SharedPreferences>();
     try {
       Get.toNamed(Routes.CALENDAR_HOME);
       // if (storage.getString(StorageConstants.token) != null) {

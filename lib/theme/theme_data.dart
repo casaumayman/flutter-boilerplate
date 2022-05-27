@@ -71,9 +71,7 @@ class ThemeConfig {
         colorScheme: ColorScheme(
           brightness: brightness,
           primary: accentColor,
-          primaryVariant: accentColor,
           secondary: accentColor,
-          secondaryVariant: accentColor,
           surface: background,
           background: background,
           error: error,

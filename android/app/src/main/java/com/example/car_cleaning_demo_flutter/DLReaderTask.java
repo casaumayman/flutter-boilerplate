@@ -1,6 +1,5 @@
 package com.example.car_cleaning_demo_flutter;
 
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.nfc.Tag;
 import android.util.Base64;
@@ -69,7 +68,7 @@ public class DLReaderTask implements Runnable {
         pin1 = activity.getPin1();
         pin2 = activity.getPin2();
 
-        activity.hideKeyboard();
+//        activity.hideKeyboard();
 
 //        publishProgress("# 読み取り開始、カードを離さないでください");
         // 読み取り中ダイアログを表示
@@ -79,9 +78,9 @@ public class DLReaderTask implements Runnable {
 
 
 
-        ProgressDialog progressdialog = new ProgressDialog(activity);
-        progressdialog.setMessage("Loading....");
-        progressdialog.show();
+//        ProgressDialog progressdialog = new ProgressDialog(activity);
+//        progressdialog.setMessage("Loading....");
+//        progressdialog.show();
 
 
         try {
@@ -341,7 +340,7 @@ public class DLReaderTask implements Runnable {
             // 記載事項変更等(本籍除く）と記載事項変更（本籍）合わせた
             // オブジェクトをJSONに追加
             obj.put("dl-changes", changesObj);
-            progressdialog.dismiss();
+//            progressdialog.dismiss();
 
 
             // Viewerを起動
@@ -356,9 +355,10 @@ public class DLReaderTask implements Runnable {
 //            activity.startActivity(intent);
         } catch (Exception e) {
             Log.e(TAG, "error", e);
+            activity.setErr(e.toString());
             publishProgress("エラー: " + e);
         } finally {
-             progressdialog.dismiss();
+//             progressdialog.dismiss();
 //            progress.dismissAllowingStateLoss();
         }
     }

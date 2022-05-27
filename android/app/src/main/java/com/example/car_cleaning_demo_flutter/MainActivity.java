@@ -1,6 +1,4 @@
 package com.example.car_cleaning_demo_flutter;
-
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,8 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -60,6 +57,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     static String pin2 = "";
 
     String myData="";
+    String err;
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
@@ -76,9 +74,13 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 //                                res.put("pin1", "NGUYEN VAN A");
 //                                res.put("pin2", "NGUYEN VAN B");
 
-                                String jsonString = new JSONObject(hashMap).toString();
-                                result.error("",myData,null);
-                                result.success(jsonString);
+                                if(err!=null){
+                                    result.error("",err,null);
+                                }else {
+                                    String jsonString = new JSONObject(hashMap).toString();
+                                    result.success(jsonString);
+                                }
+
 
                             }
                             else {
@@ -97,6 +99,9 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     public String getPin2() {
         return pin2;
     }
+    public void setErr(String err){
+        this.err=err;
+    }
 
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
@@ -104,6 +109,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         Log.d("onNewIntent","onNewIntent");
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         this.onTagDiscovered(tag);
+
     }
     public void onTagDiscovered(final Tag tag) {
         Log.d("onTagDiscovered","onTagDiscovered");
@@ -140,7 +146,10 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         enableNFC = true;
         SharedPreferences prefs = getSharedPreferences("settings", Context.MODE_PRIVATE);
         this.nfcMode = prefs.getInt("nfc_mode", NFC_AUTO_MODE);
+
         if (this.nfcMode == NFC_AUTO_MODE) {
+            Toast.makeText(this, "oncreate display", Toast.LENGTH_SHORT).show();
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // Android 8.0以上はReaderModeを利用
                 this.nfcMode = NFC_READER_MODE;
@@ -162,11 +171,14 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
+           setErr("This devide no suport nfc");
             return ;
         }
 
         if (this.nfcMode == NFC_READER_MODE) {
             Log.d(TAG, "NFC mode: ReaderMode");
+//            setErr("NFC mode: ReaderMode");
+
             if (!this.enableNFC) {
                 // メニュー画面やビューアーでNFC読み取りを無効化します
                 // これを行わないと通常モード(OS標準)の読み取りが有効になるからです
@@ -207,6 +219,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         Log.d(TAG, getClass().getSimpleName() + "#onPause()");
         super.onPause();
         if (nfcAdapter == null) {
+            setErr("This devide no suport nfc");
             return;
         }
         if (nfcMode == NFC_READER_MODE) {
@@ -217,18 +230,18 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 
     }
 
-    @TargetApi(Build.VERSION_CODES.CUPCAKE)
-    protected void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm == null) {
-            return;
-        }
-        View view = getCurrentFocus();
-        if (view == null) {
-            return;
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-    }
+//    @TargetApi(Build.VERSION_CODES.CUPCAKE)
+//    protected void hideKeyboard() {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        if (imm == null) {
+//            return;
+//        }
+//        View view = getCurrentFocus();
+//        if (view == null) {
+//            return;
+//        }
+//        imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//    }
     protected  void getHasData(HashMap<String,String> data){
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -237,7 +250,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
             public void run() {
 //                 Log.d("Print", msg + "\n");
                 hashMap=data;
-                Toast.makeText(MainActivity.this, data.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, data.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });

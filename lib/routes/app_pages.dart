@@ -1,7 +1,6 @@
 import 'package:car_cleaning_demo/modules/auth/auth.dart';
 import 'package:car_cleaning_demo/modules/calendar/calendar_binding.dart';
-import 'package:car_cleaning_demo/modules/home/home.dart';
-import 'package:car_cleaning_demo/modules/me/cards/cards_screen.dart';
+
 import 'package:car_cleaning_demo/modules/modules.dart';
 import 'package:car_cleaning_demo/modules/test_nfc/test_nfc.dart';
 import 'package:get/get.dart';
