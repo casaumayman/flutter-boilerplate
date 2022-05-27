@@ -52,6 +52,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     // また、PIN間違いが発生してダイヤログを表示している間に
     // 連続読み取りが発生することを防ぐためのフラグ
     protected boolean enableNFC = false;
+    boolean scanNfc=false;
 
     static String pin1 = "";
     static String pin2 = "";
@@ -70,6 +71,9 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
                             if (call.method.equals(KEY_NATIVE)) {
                                  pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
                                  pin2 = arguments.get("pin2") == null ? "" : arguments.get("pin2");
+                                 scanNfc=true;
+                                onResume();
+                                 Log.d("Pin", pin1+"_"+pin2);
 //                                HashMap<String, String> res = new HashMap<>();
 //                                res.put("pin1", "NGUYEN VAN A");
 //                                res.put("pin2", "NGUYEN VAN B");
@@ -142,14 +146,17 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, getClass().getSimpleName() + "#onCreate(" + savedInstanceState + ")");
-        enableNFC = true;
+
+
+    }
+
+    void  enableNfc(){
+        enableNFC=scanNfc;
         SharedPreferences prefs = getSharedPreferences("settings", Context.MODE_PRIVATE);
         this.nfcMode = prefs.getInt("nfc_mode", NFC_AUTO_MODE);
 
         if (this.nfcMode == NFC_AUTO_MODE) {
-            Toast.makeText(this, "oncreate display", Toast.LENGTH_SHORT).show();
-
+//            Toast.makeText(this, "oncreate display", Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // Android 8.0以上はReaderModeを利用
                 this.nfcMode = NFC_READER_MODE;
@@ -160,56 +167,60 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         }
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();
+        enableNfc();
+
+//        Log.d(TAG, getClass().getSimpleName() + "#onCreate(" + savedInstanceState + ")");
+
         Log.d(TAG, getClass().getSimpleName() + "#RunonResume()");
         super.onResume();
-
         invalidateOptionsMenu();
-
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
            setErr("This devide no suport nfc");
             return ;
         }
 
-        if (this.nfcMode == NFC_READER_MODE) {
-            Log.d(TAG, "NFC mode: ReaderMode");
+       if(enableNFC==true){
+           if (this.nfcMode == NFC_READER_MODE) {
+               Log.d(TAG, "NFC mode: ReaderMode");
 //            setErr("NFC mode: ReaderMode");
+               Toast.makeText(this, "START NFC_READER_MODE", Toast.LENGTH_SHORT).show();
 
-            if (!this.enableNFC) {
-                // メニュー画面やビューアーでNFC読み取りを無効化します
-                // これを行わないと通常モード(OS標準)の読み取りが有効になるからです
-                nfcAdapter.enableReaderMode(this, null, NfcAdapter.STATE_OFF, null);
-                return;
-            }
-            Bundle options = new Bundle();
-            //options.putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 500);
-            nfcAdapter.enableReaderMode(this,
-                    new NfcAdapter.ReaderCallback() {
-                        @Override
-                        public void onTagDiscovered(Tag tag) {
-                            onTagDiscovered(tag);
-                        }
-                    },
-                    NfcAdapter.FLAG_READER_NFC_B | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,
-                    options);
-        } else {
-            Log.d(TAG, "NFC mode: ForegroundDispatch");
-            if (!this.enableNFC) {
-                return;
-            }
-            Intent intent = new Intent(this, getClass());
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
-            String[][] techLists = new String[][]{
-                    new String[]{NfcB.class.getName()},
-                    new String[]{IsoDep.class.getName()}
-            };
-            nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, techLists);
-        }
+               if (!this.enableNFC) {
+                   // メニュー画面やビューアーでNFC読み取りを無効化します
+                   // これを行わないと通常モード(OS標準)の読み取りが有効になるからです
+                   nfcAdapter.enableReaderMode(this, null, NfcAdapter.STATE_OFF, null);
+                   return;
+               }
+               Bundle options = new Bundle();
+               //options.putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 500);
+               nfcAdapter.enableReaderMode(this,
+                       new NfcAdapter.ReaderCallback() {
+                           @Override
+                           public void onTagDiscovered(Tag tag) {
+                               onTagDiscovered(tag);
+                           }
+                       },
+                       NfcAdapter.FLAG_READER_NFC_B | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,
+                       options);
+           } else {
+               Log.d(TAG, "NFC mode: ForegroundDispatch");
+               if (!this.enableNFC) {
+                   return;
+               }
+               Intent intent = new Intent(this, getClass());
+               intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+               PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+               String[][] techLists = new String[][]{
+                       new String[]{NfcB.class.getName()},
+                       new String[]{IsoDep.class.getName()}
+               };
+               nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, techLists);
+           }
+       }
     }
 
     @Override
@@ -230,31 +241,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 
     }
 
-//    @TargetApi(Build.VERSION_CODES.CUPCAKE)
-//    protected void hideKeyboard() {
-//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//        if (imm == null) {
-//            return;
-//        }
-//        View view = getCurrentFocus();
-//        if (view == null) {
-//            return;
-//        }
-//        imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-//    }
-    protected  void getHasData(HashMap<String,String> data){
-        Handler handler = new Handler(Looper.getMainLooper());
 
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-//                 Log.d("Print", msg + "\n");
-                hashMap=data;
-//                Toast.makeText(MainActivity.this, data.toString(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     protected void print(String msg) {
         Handler handler = new Handler(Looper.getMainLooper());
@@ -263,12 +250,24 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
             public void run() {
                 Log.d("Print", msg + "\n");
                 myData=msg+"\n";
-                Toast.makeText(MainActivity.this, msg + "\n", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, msg + "\n", Toast.LENGTH_SHORT).show();
 
             }
         });
     }
+    protected  void getHasData(HashMap<String,String> data){
+        Handler handler = new Handler(Looper.getMainLooper());
 
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+//                 Log.d("Print", msg + "\n");
+                hashMap=data;
+                Toast.makeText(MainActivity.this,"Data hash map : "+ data.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 
     protected void showDialog(String title, String msg) {
         Log.d(TAG, getClass().getSimpleName() + "#showDialog()");
