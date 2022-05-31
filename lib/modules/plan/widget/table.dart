@@ -1,13 +1,13 @@
-
-
 import 'package:flutter/material.dart';
+
 class TablePlan extends StatefulWidget {
   const TablePlan({Key? key}) : super(key: key);
 
   @override
   _TablePlanState createState() => _TablePlanState();
 }
-List<String> list= [
+
+List<String> list = [
   '7:00',
   '8:00',
   '9:00',
@@ -21,15 +21,11 @@ List<String> list= [
   '17:00',
   '18:00',
 ];
-List<String> active=[];
-List<int> listIndex=[];
-List cellListAc=List.filled(list.length, {});
-
+List<int> listIndex = [];
+List cellListAc = List.filled(list.length, {});
+bool isAcitve = false;
 
 class _TablePlanState extends State<TablePlan> {
-  int index=0;
-
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -49,129 +45,142 @@ class _TablePlanState extends State<TablePlan> {
           ),
         ),
         Expanded(
-          flex: 3,
+            flex: 3,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child:  Row(
+              child: Row(
                 children: [
-                  for (int i=0; i<list.length; i++)
+                  for (int i = 0; i < list.length; i++)
                     _buidColumn(list[i], list[i], list[i], i)
-
                 ],
               ),
-            )
-
-        )
-
+            ))
       ],
     );
   }
 
+  Widget _buildCell(text, index, icell) {
+    return AbsorbPointer(
+      absorbing: setActive(index, icell),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            cellListAc[index] = icell;
+            if (listIndex.contains(index)) {
+              listIndex.remove(index);
+            } else {
+              listIndex.add(index);
+            }
 
-
-  Widget _buildCell(text,index,icell,active){
-    // print("render : "+isActive);
-    return Container(
-        width: 70.0,
-        height: 50,
-        decoration: BoxDecoration(
-          color:setColor(index, icell,active:active ),
-          border: Border(
-            left: BorderSide(width: 0.5, color: Colors.blue),
-            right: BorderSide(width: 0.5, color: Colors.blue),
-          ),
-
-        ),
-        child: Center(child: Text("$text",style: TextStyle(fontSize:16.0,color: Colors.black),textAlign: TextAlign.center,)));
-
+          });
+        },
+        child: Container(
+            width: 70.0,
+            height: 50,
+            decoration: BoxDecoration(
+              color: setColor(index, icell),
+              border: Border(
+                left: BorderSide(width: 0.5, color: Colors.blue),
+                right: BorderSide(width: 0.5, color: Colors.blue),
+              ),
+            ),
+            child: Center(
+                child: Text(
+              "$text",
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
+              textAlign: TextAlign.center,
+            ))),
+      ),
+    );
   }
-  Widget _buidColumn(text1,text2,text3,index){
-    print("cellIndex ${cellListAc[index]}");
+
+  Widget _buidColumn(text1, text2, text3, index) {
     return Column(
       children: [
         _buidBorderTable(),
-        AbsorbPointer(
-          absorbing:false,
-          // absorbing: isActive1=="ac"?true:false,
-          child: InkWell(
-            onTap: (){
-              setState(() {
-                cellListAc[index]=0;
-                this.index=index;
-                if(listIndex.contains(index)){
-                  listIndex.remove(index);
-                }else{
-                  listIndex.add(index);
-                }
-
-
-              });
-            },
-              child: _buildCell(text1,index,0,true)),
-        ),
+        _buildCell(text1, index, 0,),
+        // AbsorbPointer(
+        //   absorbing:false,
+        //   child: InkWell(
+        //       onTap:(){
+        //         setState(() {
+        //           cellListAc[index]=0;
+        //           if(listIndex.contains(index)){
+        //             listIndex.remove(index);
+        //           }else{
+        //             listIndex.add(index);
+        //           }
+        //           print(index.toString());
+        //         });
+        //       },
+        //       child: _buildCell(text2,index,0,true)),
+        // ),
         _buidBorderTable(),
-        AbsorbPointer(
-          absorbing:false,
-          // absorbing: isActive2=="ac"?true:false,
-          child: InkWell(
-              onTap: (){
-                setState(() {
-                  this.index=index;
-                  cellListAc[index]=1;
-                  if(listIndex.contains(index)){
-                    listIndex.remove(index);
-                  }else{
-                    listIndex.add(index);
-                  }
-                  print(index.toString());
-                });
-              },
-              child: _buildCell(text2,index,1,true)),
-        ),
+        _buildCell(text2, index, 1),
+        // AbsorbPointer(
+        //   absorbing:false,
+        //   child: InkWell(
+        //       onTap:(){
+        //         setState(() {
+        //           cellListAc[index]=1;
+        //           if(listIndex.contains(index)){
+        //             listIndex.remove(index);
+        //           }else{
+        //             listIndex.add(index);
+        //           }
+        //           print(index.toString());
+        //         });
+        //       },
+        //       child: _buildCell(text2,index,1,true)),
+        // ),
         _buidBorderTable(),
-        AbsorbPointer(
-          absorbing: false,
-          // absorbing: isActive3=="ac"?true:false,
-          child: InkWell(
-              onTap: (){
-                setState(() {
-                  this.index=index;
-                  cellListAc[index]=2;
-                  if(listIndex.contains(index)){
-                    listIndex.remove(index);
-                  }else{
-                    listIndex.add(index);
-                  }
-                  print(index.toString());
-                });
-              },
-              child: _buildCell(text3,index,2,true)),
-        ),
-        _buidBorderTable(),
+        _buildCell(text2, index, 2),
 
+        // AbsorbPointer(
+        //   absorbing: false,
+        //   child: InkWell(
+        //       onTap: (){
+        //         setState(() {
+        //           cellListAc[index]=2;
+        //           if(listIndex.contains(index)){
+        //             listIndex.remove(index);
+        //           }else{
+        //             listIndex.add(index);
+        //           }
+        //           print(index.toString());
+        //         });
+        //       },
+        //       child: _buildCell(text3,index,2,true)),
+        // ),
+        _buidBorderTable(),
       ],
     );
   }
-  bool setDisable(cellListAc,index){
-    if(cellListAc[index]!={}&&cellListAc[index]!=index){
-      return false;
+
+  
+  bool setActive(index, icell){
+    bool disable=false;
+    if (listIndex.contains(index) && cellListAc[index] == icell) {
+      disable =false;
+    } else if (listIndex.contains(index) && cellListAc[index] != icell) {
+      disable=true;
     }
-    return true;
+
+    return disable;
   }
-  Color setColor(index,icell,{active=true}){
-    Color color=active==true?Colors.white:Colors.black45;
-    if(listIndex.contains(index) && cellListAc[index]==icell){
-      color=Colors.yellow;
-    }else if(listIndex.contains(index)&& cellListAc[index]!=icell ){
-      color=Colors.black45;
+
+  Color setColor(index, icell) {
+    Color color = Colors.white;
+    if (listIndex.contains(index) && cellListAc[index] == icell) {
+      color = Colors.yellow;
+    } else if (listIndex.contains(index) && cellListAc[index] != icell) {
+      color = Colors.black45;
     }
-    // else{
-    //   color=Colors.black45;
-    // }
+
     return color;
   }
 
-  Widget _buildTitlePlan(text,textPrice){
+  Widget _buildTitlePlan(text, textPrice) {
     return Container(
         width: double.infinity,
         height: 50,
@@ -181,24 +190,29 @@ class _TablePlanState extends State<TablePlan> {
             left: BorderSide(width: 0.5, color: Colors.blue),
             right: BorderSide(width: 0.5, color: Colors.blue),
           ),
-
         ),
-
-        child: Center(child: Column(
+        child: Center(
+            child: Column(
           children: [
-            Text(text,style: TextStyle(fontSize:16.0,color: Colors.black),textAlign: TextAlign.center,),
-            Text(textPrice,style: TextStyle(fontSize:16.0,color: Colors.redAccent),textAlign: TextAlign.center,),
+            Text(
+              text,
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              textPrice,
+              style: TextStyle(fontSize: 16.0, color: Colors.redAccent),
+              textAlign: TextAlign.center,
+            ),
           ],
-        )
-        )
+        )));
+  }
+
+  Widget _buidBorderTable({width = 70.0}) {
+    return Container(
+      width: width,
+      height: 0.5,
+      color: Colors.blue,
     );
-
   }
-
-  Widget _buidBorderTable({width=70.0}){
-    return  Container(width: width,height: 0.5,color: Colors.blue,);
-
-  }
-
 }
-
