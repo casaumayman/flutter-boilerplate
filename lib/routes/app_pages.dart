@@ -1,11 +1,14 @@
 import 'package:car_cleaning_demo/modules/auth/auth.dart';
+import 'package:car_cleaning_demo/modules/calendar/calendar.dart';
 import 'package:car_cleaning_demo/modules/calendar/calendar_binding.dart';
 
 import 'package:car_cleaning_demo/modules/modules.dart';
+import 'package:car_cleaning_demo/modules/plan/plan_bingding.dart';
 import 'package:car_cleaning_demo/modules/test_nfc/test_nfc.dart';
 import 'package:get/get.dart';
 
 import '../modules/calendar/calendar_home.dart';
+import '../modules/plan/plan_screen.dart';
 
 part 'app_routes.dart';
 
@@ -30,7 +33,15 @@ class AppPages {
     GetPage(
         name: Routes.CALENDAR_HOME,
         binding: CalendarBinding(),
-        page: () => CalendarHome()),
+        page: () => CalendarHome(),
+
+    ),
+    GetPage(
+        name: Routes.PLAN_SCREEN,
+        binding: PlanBinding(),
+        page: () => PlanScreen(),
+
+    ),
     GetPage(
         name: Routes.TEST_NFC,
         page: () => TestNFCScreen(),

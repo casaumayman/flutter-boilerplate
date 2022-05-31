@@ -353,9 +353,12 @@ public class DLReaderTask implements Runnable {
 //                intent.setAction(Intent.ACTION_RUN);
 //                intent.putExtra("route", "/reader_page");
 //            activity.startActivity(intent);
+            activity.enableNFC=false;
         } catch (Exception e) {
             Log.e(TAG, "error", e);
             activity.setErr(e.toString());
+            activity.enableNFC=false;
+
             publishProgress("エラー: " + e);
         } finally {
 //             progressdialog.dismiss();
