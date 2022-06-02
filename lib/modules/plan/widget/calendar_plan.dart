@@ -1,30 +1,32 @@
 
-
+import 'package:car_cleaning_demo/modules/plan/plan_controller.dart';
+import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
 import 'package:table_calendar/table_calendar.dart';
 import '../../../models/event.dart';
 
 
 
 
-class Calendar extends StatefulWidget {
+class CalendarPlan extends StatefulWidget {
   @override
-  _CalendarState createState() => _CalendarState();
+  _CalendarPlanState createState() => _CalendarPlanState();
 }
 
-class _CalendarState extends State<Calendar> {
-  late Map<DateTime, List<Event>> selectedEvents;
+class _CalendarPlanState extends State<CalendarPlan> {
+  late Map<DateTime, List<Event>> selectedEvents={};
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+  bool disable=false;
+  PlanController controller = Get.find();
 
 
   @override
   void initState() {
-    selectedEvents = {};
+    // selectedEvents = {};
 
     super.initState();
   }
@@ -47,7 +49,6 @@ class _CalendarState extends State<Calendar> {
 
 
           calendarFormat: format,
-
           onFormatChanged: (CalendarFormat _format) {
             setState(() {
               format = _format;
@@ -62,7 +63,8 @@ class _CalendarState extends State<Calendar> {
               selectedDay = selectDay;
               focusedDay = focusDay;
             });
-            print(focusedDay);
+            print(focusedDay.day);
+
           },
 
           selectedDayPredicate: (DateTime date) {
@@ -89,6 +91,7 @@ class _CalendarState extends State<Calendar> {
               shape: BoxShape.circle,
             ),
           ),
+
           headerStyle: HeaderStyle(
             titleTextFormatter: (date, locale)=>  DateFormat('y/MM').format(date),
             formatButtonVisible: false,
@@ -97,14 +100,15 @@ class _CalendarState extends State<Calendar> {
             decoration: const BoxDecoration(
                 color: Color(0xFFF8F8F8)
             ),
+
             leftChevronIcon:Container(
                 width: 10,
                 height: 10,
-                child:Icon(Icons.arrow_left,color: Colors.grey,size:25,) ),
+                child:Icon(Icons.arrow_left,color: disable==true?grey:blue50,size:25,) ),
                 rightChevronIcon:Container(
                 width: 10,
                 height: 10,
-                child:Icon(Icons.arrow_right,color: Colors.grey,size: 25,)),
+                child:Icon(Icons.arrow_right,color:  DateTime.now().month==DateTime.now().month?blue50:grey,size: 25,)),
             formatButtonDecoration: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(50),

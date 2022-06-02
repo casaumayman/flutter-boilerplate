@@ -80,7 +80,7 @@ class _CardsScreenState extends State<CardsScreen> {
             print('Unbind card');
             Navigator.of(context).pop();
           }),
-          CommonWidget.rowHeight(height: 10.0),
+          CommonWidget.rowHeight30(height: 10.0),
           _buildMenuButton('Cancel', Colors.grey, onTap: () {
             Navigator.of(context).pop();
           }),

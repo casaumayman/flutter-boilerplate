@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                 return null;
               },
             ),
-            CommonWidget.rowHeight(),
+            CommonWidget.rowHeight30(),
             InputField(
               controller: controller.loginPasswordController,
               keyboardType: TextInputType.emailAddress,
@@ -68,11 +68,10 @@ class LoginScreen extends StatelessWidget {
                 if (value.length < 6 || value.length > 15) {
                   return 'Password should be 6~15 characters';
                 }
-
                 return null;
               },
             ),
-            CommonWidget.rowHeight(height: 80),
+            CommonWidget.rowHeight30(height: 80),
             BorderButton(
               text: 'Sign In',
               backgroundColor: Colors.white,

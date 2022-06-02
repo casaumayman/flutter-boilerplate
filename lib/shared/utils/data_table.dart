@@ -1,4 +1,4 @@
-List<String> list= [
+List<String> listDataTable= [
   '7:00',
   '8:00',
   '9:00',
