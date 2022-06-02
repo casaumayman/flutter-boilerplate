@@ -1,7 +1,7 @@
 import 'package:car_cleaning_demo/modules/plan/select_plan_screen.dart';
 import 'package:get/get.dart';
 
-import '../../models/plan_table_model.dart';
+import '../../../models/plan_table_model.dart';
 
 class SelectPlanCotroller extends GetxController{
     List<PlanTableModel> employees = <PlanTableModel>[];

@@ -1,4 +1,4 @@
-import 'package:car_cleaning_demo/modules/plan/plan_controller.dart';
+import 'package:car_cleaning_demo/modules/plan/controller/plan_controller.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,9 +45,10 @@ class TablePlanUi extends StatelessWidget  {
   }
   Widget _buildCell(text, index, indexCell) {
     return AbsorbPointer(
-      absorbing: controller.setActive(index, indexCell),
+      absorbing:controller.isClick==true?controller.setActiveCalendarClick(index, indexCell): controller.setActive(index, indexCell),
       child: InkWell(
         onTap: () {
+          controller.tableClick();
           controller.checkActive(index, indexCell);
           print("index  $index --- indexCell $indexCell");
         },
@@ -55,7 +56,7 @@ class TablePlanUi extends StatelessWidget  {
             width: 70.0,
             height: 50,
             decoration: BoxDecoration(
-              color: controller.setColor(index, indexCell),
+              color:controller.isClick==true?controller.setColorCalendarClick(index, indexCell):controller.setColor(index, indexCell),
               border: Border(
                 left: BorderSide(width: 0.5, color: Colors.blue),
                 right: BorderSide(width: 0.5, color: Colors.blue),

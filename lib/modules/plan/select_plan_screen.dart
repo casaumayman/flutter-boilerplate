@@ -1,4 +1,4 @@
-import 'package:car_cleaning_demo/modules/plan/select_plan_controller.dart';
+import 'package:car_cleaning_demo/modules/plan/controller/select_plan_controller.dart';
 import 'package:car_cleaning_demo/routes/routes.dart';
 import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';

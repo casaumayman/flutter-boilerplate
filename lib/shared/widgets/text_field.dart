@@ -3,12 +3,24 @@ import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldUI extends StatelessWidget {
-   TextFieldUI({Key? key,required this.hintText,required this.labelText,required this.maxLine, required this.borderColor,required this.spaceLabelTextField}) : super(key: key);
+   TextFieldUI({Key? key,
+     this.controller,
+     this.textInputType,
+     required this.hintText,
+     required this.labelText,
+     this.maxLine=1,
+     required this.borderColor,
+     required this.spaceLabelTextField, this.value="",this.onchange}) : super(key: key);
   Color borderColor;
   String hintText;
   String labelText;
-  int maxLine;
+  int? maxLine;
   double spaceLabelTextField;
+  String value;
+  ValueChanged<String>? onchange;
+  TextEditingController? controller;
+  TextInputType? textInputType;
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +31,16 @@ class TextFieldUI extends StatelessWidget {
         CommonWidget.TextUI(text: labelText),
         SizedBox(height: spaceLabelTextField,),
         TextFormField(
-          maxLines: this.maxLine,
+          controller: controller,
+          maxLines: maxLine,
+          onChanged:onchange,
           textAlignVertical: TextAlignVertical.center,
-
-
+          initialValue:value ,
+          keyboardType:textInputType,
           autocorrect: true,
           style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20.0,color: black),
           decoration: InputDecoration(
             hintText: hintText,
-
             hintStyle: TextStyle(color: grey,fontSize: 20.0,),
             fillColor: white,
             contentPadding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),

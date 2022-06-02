@@ -1,5 +1,5 @@
 
-import 'package:car_cleaning_demo/modules/plan/plan_controller.dart';
+import 'package:car_cleaning_demo/modules/plan/controller/plan_controller.dart';
 import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +47,6 @@ class _CalendarPlanState extends State<CalendarPlan> {
           firstDay: DateTime.now(),
           lastDay: DateTime(2030),
 
-
           calendarFormat: format,
           onFormatChanged: (CalendarFormat _format) {
             setState(() {
@@ -64,6 +63,11 @@ class _CalendarPlanState extends State<CalendarPlan> {
               focusedDay = focusDay;
             });
             print(focusedDay.day);
+            // controller.calendarClick();
+            // controller.randomListItem();
+            // controller.setActiveCalendarClick(controller.listRowRandom[0], controller.randomIndex1);
+            // controller.setActiveCalendarClick(controller.listRowRandom[1], controller.randomIndex2);
+            // controller.setActiveCalendarClick(controller.listRowRandom[2], controller.randomIndex3);
 
           },
 
