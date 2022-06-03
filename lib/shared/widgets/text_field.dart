@@ -10,13 +10,13 @@ class TextFieldUI extends StatelessWidget {
      required this.labelText,
      this.maxLine=1,
      required this.borderColor,
-     required this.spaceLabelTextField, this.value="",this.onchange}) : super(key: key);
+     required this.spaceLabelTextField, this.initialValue="",this.onchange}) : super(key: key);
   Color borderColor;
   String hintText;
   String labelText;
   int? maxLine;
   double spaceLabelTextField;
-  String value;
+  String initialValue;
   ValueChanged<String>? onchange;
   TextEditingController? controller;
   TextInputType? textInputType;
@@ -35,7 +35,6 @@ class TextFieldUI extends StatelessWidget {
           maxLines: maxLine,
           onChanged:onchange,
           textAlignVertical: TextAlignVertical.center,
-          initialValue:value ,
           keyboardType:textInputType,
           autocorrect: true,
           style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20.0,color: black),

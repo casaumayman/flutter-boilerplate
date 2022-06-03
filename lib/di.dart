@@ -7,3 +7,5 @@ class DenpendencyInjection {
     await Get.putAsync(() => StorageService().init());
   }
 }
+
+

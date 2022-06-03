@@ -12,3 +12,4 @@ const blue40=Color(0xff94c5ff);
 const blue50=Color(0xff70afff);
 const green=Color(0xff21b46c);
 const orange=Color(0xfffeac78);
+const yellow=Color(0xffbfa300);
