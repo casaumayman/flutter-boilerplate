@@ -142,11 +142,9 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         print(msg);
         showDialog(title, msg);
     }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -171,9 +169,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     protected void onResume() {
         super.onResume();
         enableNfc();
-
 //        Log.d(TAG, getClass().getSimpleName() + "#onCreate(" + savedInstanceState + ")");
-
         Log.d(TAG, getClass().getSimpleName() + "#RunonResume()");
         super.onResume();
         invalidateOptionsMenu();
@@ -182,7 +178,6 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
            setErr("This devide no suport nfc");
             return ;
         }
-
        if(enableNFC==true){
            if (this.nfcMode == NFC_READER_MODE) {
                Log.d(TAG, "NFC mode: ReaderMode");
@@ -240,7 +235,11 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         }
 
     }
+    HashMap<String,String> getData(){
+        HashMap<String,String> hashMapData=new HashMap<>();
+        return  hashMapData;
 
+    }
 
 
     protected void print(String msg) {
