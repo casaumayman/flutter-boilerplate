@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:car_cleaning_demo/shared/constants/progress_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
