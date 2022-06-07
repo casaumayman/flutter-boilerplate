@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:car_cleaning_demo/shared/constants/progress_dialog.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -42,8 +40,6 @@ class ConfirmInfoController extends GetxController{
   }
 
   void scanNfcSubmit(context) async {
-    var dialog=dialogLoading(context,"Loading...");
-    await dialog.show();
     startLoading();
     try {
       var requestData = <String, String> {
@@ -61,7 +57,6 @@ class ConfirmInfoController extends GetxController{
         edtAddress.text=dataHashMap["address"];
       }
       stopLoading();
-      await dialog.hide();
       return;
     } catch (error) {
       if (error is PlatformException) {
@@ -76,7 +71,6 @@ class ConfirmInfoController extends GetxController{
 
         data.value = error.toString();
       }
-      await dialog.hide();
       stopLoading();
       return;
     }

@@ -1,6 +1,5 @@
 import 'package:car_cleaning_demo/modules/plan/plan.dart';
 import 'package:car_cleaning_demo/routes/routes.dart';
-import 'package:car_cleaning_demo/shared/constants/progress_dialog.dart';
 import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
