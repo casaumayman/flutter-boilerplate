@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 
 class PlanController extends GetxController{
    RxList active=[].obs;
-   RxList listIndex=[].obs;
-   List cellListAc=List.filled(listDataTable.length, {});
+   RxList listIndexCell=[].obs;
+   List listCellActive=List.filled(listDataTable.length, {});
    Color colorTable=white;
 
 
@@ -43,22 +43,21 @@ class PlanController extends GetxController{
    }
    bool setActiveCalendarClick(int index,int  indexCell){
      bool disable=false;
-     if (listRowRandom.contains(index) && cellListAc[index] == indexCell) {
+     if (listRowRandom.contains(index) && listCellActive[index] == indexCell) {
        disable =true;
      }
-
      return disable;
      update();
    }
    void checkActiveCalendar(int index,int indexCell){
-     cellListAc[index] = indexCell;
-     print("Cell lits index "+ cellListAc[index].toString());
-     if (listIndex.contains(index)) {
-       listIndex.remove(index);
+     listCellActive[index] = indexCell;
+     print("Cell lits index "+ listCellActive[index].toString());
+     if (listIndexCell.contains(index)) {
+       listIndexCell.remove(index);
      } else {
-       listIndex.add(index);
+       listIndexCell.add(index);
      }
-     print("lits index "+ listIndex.toString());
+     print("lits index "+ listIndexCell.toString());
 
      update();
 
@@ -67,10 +66,9 @@ class PlanController extends GetxController{
    Color setColorCalendarClick(int index,int indexCell){
      // Color color=active==true?Colors.white:Colors.black45;
      Color color=Colors.white;
-     if(listIndex.contains(index) && cellListAc[index]==indexCell){
+     if(listIndexCell.contains(index) && listCellActive[index]==indexCell){
        color=Colors.grey;
      }
-
      return color;
      update();
    }
@@ -85,44 +83,52 @@ class PlanController extends GetxController{
    }
 
 
-
-
-   void checkActive(int index,int indexCell){
-
-     cellListAc[index] = indexCell;
-     print("Cell lits index "+ cellListAc[index].toString());
-     if (listIndex.contains(index)) {
-       listIndex.remove(index);
+   void checkActive(int indexCell,int indexRow){
+     listCellActive[indexCell] = indexRow;
+     print("listCellActive  ${listCellActive[indexCell] }" );
+     if (listIndexCell.contains(indexCell)) {
+       listIndexCell.remove(indexCell);
      } else {
-       listIndex.add(index);
+       listIndexCell.add(indexCell);
      }
-     print("lits index "+ listIndex.toString());
      update();
 
    }
 
-   bool setActive(int index,int  indexCell){
+   bool setActive(int indexCell,int  indexRow){
      bool disable=false;
-     if (listIndex.contains(index) && cellListAc[index] == indexCell) {
+     if (listIndexCell.contains(indexCell) && listCellActive[indexCell] == indexRow) {
        disable =false;
-     } else if (listIndex.contains(index) && cellListAc[index] != indexCell) {
+     } else if (listIndexCell.contains(indexCell) && listCellActive[indexCell] != indexRow) {
        disable=true;
      }
+
+
 
      return disable;
    }
 
-   Color setColor(int index,int indexCell){
+   Color setColor(int indexCell,int indexRow){
       // Color color=active==true?Colors.white:Colors.black45;
      Color color=Colors.white;
-      if(listIndex.contains(index) && cellListAc[index]==indexCell){
+      if(listIndexCell.contains(indexCell) && listCellActive[indexCell]==indexRow){
          color=Colors.yellow;
       }
-      else if(listIndex.contains(index)&& cellListAc[index]!=indexCell ){
+      else if(listIndexCell.contains(indexCell)&& listCellActive[indexCell]!=indexRow ){
          color=Colors.black45;
       }else{
         color=Colors.white;
       }
+
+      if(isClick==true){
+        for(int i=0;i<listIndexCell.length;i++){
+          if(listIndexCell[i]==randomIndex1){
+
+          }
+        }
+      }
+
+
       return color;
 
    }

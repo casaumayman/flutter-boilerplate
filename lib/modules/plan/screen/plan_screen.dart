@@ -98,7 +98,7 @@ class PlanScreen extends GetView<PlanController> {
           width: width,
           height: 40.0,
           child: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10.0),
             child: Align(
                 alignment: Alignment.centerLeft,
                 child: CommonWidget.TextUI(text: "サポート",fontSize: 18.0,color: white)
@@ -106,7 +106,7 @@ class PlanScreen extends GetView<PlanController> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+          padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

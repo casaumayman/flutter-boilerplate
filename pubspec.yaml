@@ -38,10 +38,10 @@ dependencies:
   table_calendar: ^3.0.6
   intl: ^0.17.0
   table_sticky_headers: ^2.0.0
-  horizontal_data_table: ^3.6.5
   syncfusion_flutter_datagrid: ^20.1.57
   adaptive_scrollbar: ^2.1.2
-  progress_dialog: ^1.2.4
+  sn_progress_dialog: ^1.0.8
+
 
 
 

@@ -37,6 +37,7 @@ import jp.co.osstech.libjeid.dl.DriverLicenseSignature;
 import jp.co.osstech.libjeid.util.BitmapARGB;
 import jp.co.osstech.libjeid.util.Hex;
 
+
 public class DLReaderTask implements Runnable {
     private static final String TAG = MainActivity.TAG;
     private static final String DPIN = "****";
@@ -44,6 +45,7 @@ public class DLReaderTask implements Runnable {
     private String pin1;
     private String pin2;
     private MainActivity activity;
+
     HashMap<String,String> hashMap=new HashMap<String,String>();
 
 
@@ -227,10 +229,6 @@ public class DLReaderTask implements Runnable {
             hashMap.put("expireDate",expireDate.toString());
             hashMap.put("licenseNumber",entries.getLicenseNumber());
             hashMap.put("changedEntries",changedEntries.toString());
-
-
-
-
             sendData();
 
             JSONArray changesObj = new JSONArray();
@@ -330,6 +328,7 @@ public class DLReaderTask implements Runnable {
                 // 真正性検証
                 ValidationResult result = files.validate();
                 obj.put("dl-verified", result.isValid());
+
 //                publishProgress("真正性検証結果: " + result);
             } catch(FileNotFoundException e) {
                 // PIN2を入力していないfilesオブジェクトは

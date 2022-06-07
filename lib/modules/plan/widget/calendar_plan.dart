@@ -21,7 +21,7 @@ class _CalendarPlanState extends State<CalendarPlan> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
   bool disable=false;
-  PlanController controller = Get.find();
+
 
 
   @override
@@ -35,8 +35,6 @@ class _CalendarPlanState extends State<CalendarPlan> {
     return selectedEvents[date] ?? [];
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,7 +43,8 @@ class _CalendarPlanState extends State<CalendarPlan> {
         TableCalendar(
           focusedDay: selectedDay,
           firstDay: DateTime.now(),
-          lastDay: DateTime(2030),
+          lastDay: DateTime(2050),
+
 
           calendarFormat: format,
           onFormatChanged: (CalendarFormat _format) {
@@ -55,6 +54,7 @@ class _CalendarPlanState extends State<CalendarPlan> {
           },
           startingDayOfWeek: StartingDayOfWeek.monday,
           daysOfWeekVisible: true,
+
 
           //Day Changed
           onDaySelected: (DateTime selectDay, DateTime focusDay) {
@@ -74,7 +74,8 @@ class _CalendarPlanState extends State<CalendarPlan> {
           selectedDayPredicate: (DateTime date) {
             return isSameDay(selectedDay, date);
           },
-          eventLoader: _getEventsfromDay,
+
+          // eventLoader: _getEventsfromDay,
           //To style the Calendar
           calendarStyle: const CalendarStyle(
 
@@ -96,6 +97,7 @@ class _CalendarPlanState extends State<CalendarPlan> {
             ),
           ),
 
+
           headerStyle: HeaderStyle(
             titleTextFormatter: (date, locale)=>  DateFormat('y/MM').format(date),
             formatButtonVisible: false,
@@ -106,19 +108,19 @@ class _CalendarPlanState extends State<CalendarPlan> {
             ),
 
             leftChevronIcon:Container(
-                width: 10,
-                height: 10,
-                child:Icon(Icons.arrow_left,color: disable==true?grey:blue50,size:25,) ),
+                width: 12,
+                height: 12,
+                child:Icon(Icons.arrow_left,color:blue50,size:25,) ),
                 rightChevronIcon:Container(
-                width: 10,
-                height: 10,
-                child:Icon(Icons.arrow_right,color:  DateTime.now().month==DateTime.now().month?blue50:grey,size: 25,)),
+                width: 12,
+                height: 12,
+                child:Icon(Icons.arrow_right,color:  blue50,size: 25,)),
             formatButtonDecoration: BoxDecoration(
-              color: Colors.red,
+              color: red,
               borderRadius: BorderRadius.circular(50),
             ),
             formatButtonTextStyle: const TextStyle(
-              color: Colors.grey,
+              color: grey,
             ),
           ),
         ),
@@ -133,3 +135,5 @@ class _CalendarPlanState extends State<CalendarPlan> {
     );
   }
 }
+
+

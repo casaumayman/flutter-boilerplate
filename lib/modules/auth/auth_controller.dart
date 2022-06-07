@@ -63,6 +63,7 @@ class AuthController extends GetxController {
         ),
       );
 
+
       final prefs = Get.find<SharedPreferences>();
       if (res!.token.isNotEmpty) {
         prefs.setString(StorageConstants.token, res.token);
@@ -79,7 +80,6 @@ class AuthController extends GetxController {
     registerEmailController.dispose();
     registerPasswordController.dispose();
     registerConfirmPasswordController.dispose();
-
     loginEmailController.dispose();
     loginPasswordController.dispose();
   }
