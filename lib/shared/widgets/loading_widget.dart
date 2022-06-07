@@ -12,7 +12,12 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Opacity(opacity: isLoading ? 0.2 : 1, child: child),
+      Opacity(
+          opacity: isLoading ? 0.2 : 1,
+          child: IgnorePointer(
+            child: child,
+            ignoring: isLoading,
+          )),
       isLoading
           ? Center(
               child: Column(
