@@ -18,6 +18,9 @@ class SizeConfig {
   late double refHeight;
   late double refWidth;
 
+  double width (context)=>MediaQuery.of(context).size.width;
+  double heigth (context)=>MediaQuery.of(context).size.height;
+
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;

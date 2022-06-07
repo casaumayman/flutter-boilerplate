@@ -72,7 +72,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
                                  pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
                                  pin2 = arguments.get("pin2") == null ? "" : arguments.get("pin2");
                                  scanNfc=true;
-                                onResume();
+                                 onResume();
                                  Log.d("Pin", pin1+"_"+pin2);
 //                                HashMap<String, String> res = new HashMap<>();
 //                                res.put("pin1", "NGUYEN VAN A");
@@ -81,8 +81,21 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
                                 if(err!=null){
                                     result.error("",err,null);
                                 }else {
-                                    String jsonString = new JSONObject(hashMap).toString();
-                                    result.success(jsonString);
+                                    Handler handler = new Handler(Looper.getMainLooper());
+
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+//                                            HashMap<String,String> h=new HashMap<>();
+//                                            h.put("name","a");
+//                                            h.put("address","Ha noi");
+//                                            h.put("birthDate","1313");
+
+                                            String jsonString = new JSONObject(hashMap).toString();
+                                            result.success(jsonString);
+                                        }
+                                    });
+
                                 }
 
 
@@ -260,7 +273,6 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         handler.post(new Runnable() {
             @Override
             public void run() {
-//                 Log.d("Print", msg + "\n");
                 hashMap=data;
                 Toast.makeText(MainActivity.this,"Data hash map : "+ data.toString(), Toast.LENGTH_SHORT).show();
 

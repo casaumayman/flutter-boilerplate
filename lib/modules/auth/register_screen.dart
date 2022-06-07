@@ -52,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                 return null;
               },
             ),
-            CommonWidget.rowHeight(),
+            CommonWidget.rowHeight30(),
             InputField(
               controller: controller.registerPasswordController,
               keyboardType: TextInputType.emailAddress,
@@ -71,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                 return null;
               },
             ),
-            CommonWidget.rowHeight(),
+            CommonWidget.rowHeight30(),
             InputField(
               controller: controller.registerConfirmPasswordController,
               keyboardType: TextInputType.emailAddress,
@@ -90,7 +90,7 @@ class RegisterScreen extends StatelessWidget {
                 return null;
               },
             ),
-            CommonWidget.rowHeight(height: 10.0),
+            CommonWidget.rowHeight30(height: 10.0),
             AppCheckbox(
               label:
                   'I have read and agreed to the Terms & Conditions and Privay Policy of Demo.',
@@ -99,7 +99,7 @@ class RegisterScreen extends StatelessWidget {
                 controller.registerTermsChecked = val!;
               },
             ),
-            CommonWidget.rowHeight(height: 80),
+            CommonWidget.rowHeight30(height: 80),
             BorderButton(
               text: 'Sign Up',
               backgroundColor: Colors.white,

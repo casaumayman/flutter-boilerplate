@@ -57,15 +57,18 @@ class CalendarHome extends GetView<CalendarController> {
                           ],
                         )),
                     buildLine(width),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: buildBigText("予約する")),
-                        buildBoxText()
-                      ],
+                    InkWell(
+                      onTap: ()=>  Get.toNamed(Routes.PLAN_SCREEN),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: buildBigText("予約する")),
+                          buildBoxText()
+                        ],
+                      ),
                     ),
                     buildLine(width),
                     Row(

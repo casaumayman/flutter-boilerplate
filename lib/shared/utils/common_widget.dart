@@ -1,3 +1,4 @@
+import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -28,17 +29,70 @@ class CommonWidget {
     );
   }
 
-  static SizedBox rowHeight({double height = 30}) {
+  static Widget TextUI({String text="",double fontSize= 18.0,Color color=black}){
+    return Text(text,style: TextStyle(fontSize: fontSize,color:color,fontWeight: FontWeight.normal ),);
+  }
+  static AppBar AppBarUI({String title=""}){
+    return AppBar(
+      title: TextUI(text: title,fontSize: 30),
+      backgroundColor: grey,
+      automaticallyImplyLeading: false,
+    );
+  }
+
+  static SizedBox rowHeight5({double height =5}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight10({double height = 10}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight15({double height = 15}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight20({double height = 20}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight25({double height = 25}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight30({double height = 30}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight35({double height = 35}) {
+    return SizedBox(height: height);
+  }
+  static SizedBox rowHeight40({double height = 40}) {
     return SizedBox(height: height);
   }
 
-  static SizedBox rowWidth({double width = 30}) {
+  static SizedBox rowWidth5({double width = 5}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth10({double width = 10}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth15({double width = 15}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth20({double width = 20}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth25({double width = 25}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth30({double width = 30}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth35({double width = 35}) {
+    return SizedBox(width: width);
+  }
+  static SizedBox rowWidth40({double width = 40}) {
     return SizedBox(width: width);
   }
 
-  static void toast(String error) async {
+  static void toast(String msg) async {
     await Fluttertoast.showToast(
-        msg: error,
+        msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 3,
@@ -46,4 +100,5 @@ class CommonWidget {
         textColor: Colors.black,
         fontSize: 16.0);
   }
+
 }

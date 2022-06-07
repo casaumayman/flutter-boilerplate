@@ -41,7 +41,7 @@ class _AppCheckboxState extends State<AppCheckbox> {
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 onChanged: _onChecked),
           ),
-          CommonWidget.rowWidth(width: 10.0),
+          CommonWidget.rowWidth30(width: 10.0),
           Flexible(
             child: Text(
               widget.label!,

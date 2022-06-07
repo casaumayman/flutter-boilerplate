@@ -151,6 +151,7 @@ public class DLReaderTask implements Runnable {
 
             //2
             obj.put("dl-kana", entries.getKana());
+
 //            nameKana=nameKana+entries.getKana();
 
 
@@ -226,6 +227,7 @@ public class DLReaderTask implements Runnable {
             hashMap.put("expireDate",expireDate.toString());
             hashMap.put("licenseNumber",entries.getLicenseNumber());
             hashMap.put("changedEntries",changedEntries.toString());
+
 
 
 

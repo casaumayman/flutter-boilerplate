@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'app_binding.dart';
 import 'di.dart';
@@ -10,7 +11,7 @@ import 'theme/theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DenpendencyInjection.init();
-  runApp(App());
+  initializeDateFormatting().then((_) => runApp(App()));
 }
 
 class App extends StatelessWidget {
