@@ -7,7 +7,7 @@ import 'package:sn_progress_dialog/progress_dialog.dart';
 
 class ConfirmInfoController extends GetxController{
   var pin1 = "".obs;
-  var isLoading = false.obs;
+  var isLoading = false;
   var data = "".obs;
   var errorValue="".obs;
 
@@ -20,11 +20,13 @@ class ConfirmInfoController extends GetxController{
 
 
   void startLoading() {
-    isLoading.value = true;
+    isLoading = true;
+    update();
   }
 
   void stopLoading() {
-    isLoading.value = false;
+    isLoading= false;
+    update();
   }
   void setNoErr(){
     errorValue.value="";
@@ -32,8 +34,6 @@ class ConfirmInfoController extends GetxController{
   }
 
   bool isValidate(){
-
-
     return true;
   }
 

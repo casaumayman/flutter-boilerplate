@@ -4,6 +4,7 @@ import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:car_cleaning_demo/shared/widgets/button_ui.dart';
+import 'package:car_cleaning_demo/shared/widgets/loading_widget.dart';
 import 'package:car_cleaning_demo/shared/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ class ConfirmInfoScreen extends StatelessWidget {
       appBar: CommonWidget.AppBarUI(title: "お客様情報入力"),
       body: GetBuilder<ConfirmInfoController>(
       builder: (controller) =>
-      Stack(
+      LoadingWidget(isLoading: controller.isLoading, child: Stack(
         children: [
           Opacity(
             opacity: controller.errorValue!=""?0.4:1,
@@ -92,8 +93,8 @@ class ConfirmInfoScreen extends StatelessWidget {
                                     activeColor: blue50,
                                     value:true,
                                     onChanged: (value){
-                                  value!=value;
-                                }),
+                                      value!=value;
+                                    }),
                                 CommonWidget.TextUI(text: "規約に同意する")
                               ],
                             )
@@ -120,7 +121,7 @@ class ConfirmInfoScreen extends StatelessWidget {
               ),
             ),
           ),
-         controller.errorValue!=""? Align(
+          controller.errorValue!=""? Align(
             alignment: Alignment.center,
             child: Container(
               width: MediaQuery.of(context).size.width*0.6,
@@ -139,14 +140,15 @@ class ConfirmInfoScreen extends StatelessWidget {
                       textColor: white, width:
                       width, buttonColor: green,
                       onPressed: (){
-                    controller.setNoErr();
-                  })
+                        controller.setNoErr();
+                      })
                 ],
               ),
             ),
           ):Container()
         ],
-      ),
+      ))
+
       )
     );
   }

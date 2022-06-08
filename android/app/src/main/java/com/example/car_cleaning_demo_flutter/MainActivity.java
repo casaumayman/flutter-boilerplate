@@ -33,7 +33,7 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
 import jp.co.osstech.libjeid.InvalidPinException;
 
-public class MainActivity extends FlutterActivity
+public class MainActivity extends FlutterActivity implements TagDiscoveredListener
 {
     public static final String CHANNEL = "com.example.car_cleaning_demo_flutter.chanel";
     public static final String KEY_NATIVE = "SCAN_NFC";
