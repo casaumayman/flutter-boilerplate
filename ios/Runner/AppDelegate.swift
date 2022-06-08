@@ -43,6 +43,16 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+            if (userActivity.activityType == NSUserActivityTypeBrowsingWeb) {
+                if (userActivity.webpageURL != nil) {
+                    print("url: \(String(describing: userActivity.webpageURL))")
+                    return true
+                }
+            }
+            return false
+        }
 }
 
 private func testCommunicate(result: FlutterResult, isError: Bool) {

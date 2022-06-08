@@ -7,7 +7,5 @@ class AppBinding extends Bindings {
   void dependencies() async {
     Get.put(ApiProvider(), permanent: true);
     Get.put(ApiRepository(apiProvider: Get.find()), permanent: true);
-
-
   }
 }
