@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.car_cleaning_demo_flutter"
     android:installLocation="auto">
+
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature android:name="android.hardware.nfc" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,8 +12,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="car_cleaning_demo_flutter"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -28,20 +28,23 @@
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI.
             -->
+            <tools:validation testUrl="https://test-deep-link-28127.web.app/" />
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
 
-            <intent-filter android:autoVerify="true" tools:targetApi="M">
-                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="M">
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <intent-filter>
-                <data
-                    android:host="com.example.car_cleaning_demo_flutter"
-                    android:scheme="app" />
+            <intent-filter android:autoVerify="true">
+                <data android:scheme="https" />
+                <data android:host="test-deep-link-28127.web.app" />
 
                 <action android:name="android.intent.action.VIEW" />
 
@@ -53,6 +56,7 @@
                     android:host="com.example.car_cleaning_demo_flutter"
                     android:scheme="application" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
