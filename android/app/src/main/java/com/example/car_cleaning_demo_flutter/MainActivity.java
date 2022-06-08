@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.util.Log;
 
 import android.widget.Toast;
@@ -42,7 +43,6 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 
     HashMap<String,String> hashMap=new HashMap<>();
 
-
     // NFC読み取りモード
     private final int NFC_AUTO_MODE = 0;
     private final int NFC_READER_MODE = 1;
@@ -63,17 +63,25 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
+        //1
+//        Toast.makeText(this, "configureFlutterEngine", Toast.LENGTH_SHORT).show();
+
 
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
+//                            Log.d("MethodChannel","MethodChannel");
+//                            Toast.makeText(this, "MethodChannel", Toast.LENGTH_SHORT).show();
+
                             final Map<String, String> arguments = call.arguments();
                             if (call.method.equals(KEY_NATIVE)) {
-                                 pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
+                                Log.d("KEY_NATIVE","KEY_NATIVE");
+
+                                pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
                                  pin2 = arguments.get("pin2") == null ? "" : arguments.get("pin2");
                                  scanNfc=true;
                                  onResume();
-                                 Log.d("Pin", pin1+"_"+pin2);
+//                                 Log.d("Pin", pin1+"_"+pin2);
 //                                HashMap<String, String> res = new HashMap<>();
 //                                res.put("pin1", "NGUYEN VAN A");
 //                                res.put("pin2", "NGUYEN VAN B");
@@ -107,7 +115,21 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
                         }
                 );
     }
+   //2
+    @Override
+    protected void onStart() {
+//        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+//        Log.d("onStart","onStart");
 
+        super.onStart();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
+        Log.d("onCreate","onCreate");
+    }
 
     public String getPin1() {
         return pin1;
@@ -125,15 +147,15 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         super.onNewIntent(intent);
         Log.d("onNewIntent","onNewIntent");
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        this.onTagDiscovered(tag);
+        onTagDiscovered(tag);
 
     }
+
     public void onTagDiscovered(final Tag tag) {
         Log.d("onTagDiscovered","onTagDiscovered");
         DLReaderTask task = new DLReaderTask(MainActivity.this, tag);
         ExecutorService exec = Executors.newSingleThreadExecutor();
         exec.submit(task);
-        Log.d("GetPin", " Pin1 :" + getPin1() + " Pin 2 : " + getPin2());
 
     }
 
@@ -248,11 +270,7 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         }
 
     }
-    HashMap<String,String> getData(){
-        HashMap<String,String> hashMapData=new HashMap<>();
-        return  hashMapData;
 
-    }
 
 
     protected void print(String msg) {

@@ -11,7 +11,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
-import '../../models/plan_table_model.dart';
+import '../../../models/plan_table_model.dart';
 
 
 class SelectPlanScreen extends GetView<SelectPlanCotroller> {
@@ -19,77 +19,79 @@ class SelectPlanScreen extends GetView<SelectPlanCotroller> {
 
   @override
   Widget build(BuildContext context) {
-    controller.initData();
    double width= MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: CommonWidget.AppBarUI(title: "メニュー選択"),
       body:GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: GetBuilder<SelectPlanCotroller>(
-          builder: (s) =>  Column(
+          initState: (state) { controller.initData() ;},
+          builder: (_) =>  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SfDataGridTheme(
-                      data: SfDataGridThemeData(
-                          gridLineColor: blue50, gridLineStrokeWidth: 1.0,
-                          headerColor: blue40),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                        child: SfDataGrid(
-                          source: controller.productDataSource,
-                          gridLinesVisibility: GridLinesVisibility.both,
-                          headerGridLinesVisibility: GridLinesVisibility.both,
-                          columns: <GridColumn>[
-                            GridColumn(
-                                columnName: 'プラン',
-                                width: width*0.27,
-                                label: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SfDataGridTheme(
+                        data: SfDataGridThemeData(
+                            gridLineColor: blue50, gridLineStrokeWidth: 1.0,
+                            headerColor: blue40),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 240,
+                          child: SfDataGrid(
+                            source: controller.productDataSource,
+                            gridLinesVisibility: GridLinesVisibility.both,
+                            headerGridLinesVisibility: GridLinesVisibility.both,
+                            columns: <GridColumn>[
+                              GridColumn(
+                                  columnName: 'プラン',
+                                  width: width*0.27,
+                                  label: Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 2.0),
+                                      alignment: Alignment.center,
+                                      child: CommonWidget.TextUI(text: 'プラン',fontSize: 13.0)
+                                  )
+                              ),
+                              GridColumn(
+                                  columnName: '説明',
+                                  width: width*0.27,
+                                  label: Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 2.0),
+                                      alignment: Alignment.center,
+                                      child: CommonWidget.TextUI(text:"説明",fontSize: 13.0))),
+                              GridColumn(
+                                  columnName: '金額',
+                                  width: width*0.27,
+                                  label: Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      alignment: Alignment.center,
+                                      child: CommonWidget.TextUI(text: '金額',fontSize: 13.0))),
+                              GridColumn(
+                                  columnName: 'isAvailble',
+                                  width: width*0.19,
+                                  label: Container(
                                     padding: EdgeInsets.symmetric(horizontal: 2.0),
                                     alignment: Alignment.center,
-                                    child: CommonWidget.TextUI(text: 'プラン',fontSize: 13.0)
-                                )
-                            ),
-                            GridColumn(
-                                columnName: '説明',
-                                width: width*0.27,
-                                label: Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 2.0),
-                                    alignment: Alignment.center,
-                                    child: CommonWidget.TextUI(text:"説明",fontSize: 13.0))),
-                            GridColumn(
-                                columnName: '金額',
-                                width: width*0.27,
-                                label: Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    alignment: Alignment.center,
-                                    child: CommonWidget.TextUI(text: '金額',fontSize: 13.0))),
-                            GridColumn(
-                                columnName: 'isAvailble',
-                                width: width*0.19,
-                                label: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 2.0),
-                                  alignment: Alignment.center,
-                                  child: Text(''),
-                                ))
-                          ],
+                                    child: Text(''),
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: CommonWidget.TextUI(text: "サービス料: ${controller.priceTotal}円",fontSize: 20.0)
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0,right: 10.0),
-                      child: TextFieldUI(hintText: "ご要望",labelText: "",  maxLine: 3, borderColor: green,spaceLabelTextField: 0.0),
-                    )
-                  ],
+                      Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: CommonWidget.TextUI(text: "サービス料: ${controller.priceTotal}円",fontSize: 20.0)
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0,right: 10.0),
+                        child: TextFieldUI(hintText: "ご要望",labelText: "",  maxLine: 3, borderColor: green,spaceLabelTextField: 0.0),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(

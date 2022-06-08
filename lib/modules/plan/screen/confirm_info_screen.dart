@@ -4,6 +4,7 @@ import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:car_cleaning_demo/shared/widgets/button_ui.dart';
+import 'package:car_cleaning_demo/shared/widgets/loading_widget.dart';
 import 'package:car_cleaning_demo/shared/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,11 +21,10 @@ class ConfirmInfoScreen extends StatelessWidget {
       appBar: CommonWidget.AppBarUI(title: "お客様情報入力"),
       body: GetBuilder<ConfirmInfoController>(
       builder: (controller) =>
-      Stack(
+      LoadingWidget(isLoading: controller.isLoading, child: Stack(
         children: [
           Opacity(
             opacity: controller.errorValue!=""?0.4:1,
-
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -34,9 +34,9 @@ class ConfirmInfoScreen extends StatelessWidget {
                     TextFieldUI(
                       hintText: "",
                       labelText: "PIN CODE",
+                      obscureText: true,
                       textInputType: TextInputType.number,
                       borderColor: blue50,spaceLabelTextField: 10.0,
-
                       onchange: (value){
                         controller.pin1.value = value;
                       },
@@ -44,10 +44,7 @@ class ConfirmInfoScreen extends StatelessWidget {
 
                     CommonWidget.rowHeight10(),
                     Center(child: ButtonUI(text: "NFCの情報を利用する", textColor: black, width: 240.0, buttonColor: orange, onPressed: (){
-                      // controller.isLoading.isFalse?pr.hide():pr.show();
                       controller.scanNfcSubmit(context);
-                      // print(controller.isLoading.value);
-                      // print(controller.pin1.value);
                     })),
                     CommonWidget.rowHeight20(),
                     //name
@@ -59,7 +56,7 @@ class ConfirmInfoScreen extends StatelessWidget {
                     CommonWidget.rowHeight20(),
                     // birthDay
                     TextFieldUI(
-                        controller: controller.edtBirtday,
+                        controller: controller.edtBirthday,
                         hintText: "", labelText: "お誕生日",  borderColor: blue50,spaceLabelTextField: 10.0),
                     CommonWidget.rowHeight20(),
                     //address
@@ -94,10 +91,10 @@ class ConfirmInfoScreen extends StatelessWidget {
                               children: [
                                 Checkbox(
                                     activeColor: blue50,
-
-                                    value:true, onChanged: (value){
-                                  value!=value;
-                                }),
+                                    value:true,
+                                    onChanged: (value){
+                                      value!=value;
+                                    }),
                                 CommonWidget.TextUI(text: "規約に同意する")
                               ],
                             )
@@ -119,16 +116,12 @@ class ConfirmInfoScreen extends StatelessWidget {
                         ],
                       ),
                     )
-
-
-
-
                   ],
                 ),
               ),
             ),
           ),
-         controller.errorValue!=""? Align(
+          controller.errorValue!=""? Align(
             alignment: Alignment.center,
             child: Container(
               width: MediaQuery.of(context).size.width*0.6,
@@ -147,14 +140,15 @@ class ConfirmInfoScreen extends StatelessWidget {
                       textColor: white, width:
                       width, buttonColor: green,
                       onPressed: (){
-                    controller.setNoErr();
-                  })
+                        controller.setNoErr();
+                      })
                 ],
               ),
             ),
           ):Container()
         ],
-      ),
+      ))
+
       )
     );
   }

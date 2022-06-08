@@ -1,5 +1,6 @@
 import 'package:car_cleaning_demo/modules/calendar/calendar_controller.dart';
 import 'package:car_cleaning_demo/routes/routes.dart';
+import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,7 +42,7 @@ class CalendarHome extends GetView<CalendarController> {
                   children: [
                     InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.TEST_NFC);
+                          Get.toNamed(Routes.PLAN_SCREEN);
                         },
                         child: Row(
                           children: <Widget>[
@@ -58,7 +59,7 @@ class CalendarHome extends GetView<CalendarController> {
                         )),
                     buildLine(width),
                     InkWell(
-                      onTap: ()=>  Get.toNamed(Routes.PLAN_SCREEN),
+                      onTap: ()=>  Get.toNamed(Routes.TEST_NFC),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +133,7 @@ class CalendarHome extends GetView<CalendarController> {
     );
   }
 
-  borderBox() {
+ BoxDecoration borderBox() {
     return BoxDecoration(
         border: Border.all(
       color: Color(0xff94c476),
@@ -153,7 +154,7 @@ class CalendarHome extends GetView<CalendarController> {
           ),
           borderRadius: BorderRadius.circular(8.0)),
       child: Center(
-        child: Text("初回クーポン配布！！"),
+        child:CommonWidget.TextUI(text: "初回クーポン配布！！",fontSize: 18.0),
       ),
     );
   }
@@ -161,10 +162,7 @@ class CalendarHome extends GetView<CalendarController> {
   Widget buildExplain() {
     return Column(
       children: [
-        Text(
-          "水なし洗車とは？",
-          style: TextStyle(fontSize: 18),
-        ),
+        CommonWidget.TextUI(text: "水なし洗車とは？",fontSize: 18.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

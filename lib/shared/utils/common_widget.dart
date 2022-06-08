@@ -32,10 +32,10 @@ class CommonWidget {
   static Widget TextUI({String text="",double fontSize= 18.0,Color color=black}){
     return Text(text,style: TextStyle(fontSize: fontSize,color:color,fontWeight: FontWeight.normal ),);
   }
-  static AppBar AppBarUI({String title=""}){
+  static AppBar AppBarUI({String title="",Color titleColor:black,double fontSize=30.0,Color backgroundColor:grey}){
     return AppBar(
-      title: TextUI(text: title,fontSize: 30),
-      backgroundColor: grey,
+      title: TextUI(text: title,fontSize: fontSize,color: titleColor),
+      backgroundColor: backgroundColor,
       automaticallyImplyLeading: false,
     );
   }
