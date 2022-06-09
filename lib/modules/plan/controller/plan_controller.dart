@@ -14,41 +14,7 @@ class PlanController extends GetxController{
 
 
 
-   List listRowRandom=List.filled(3, {});
 
-   Random random = new Random();
-   int indexRow=0;
-   int indexCellDisable=0;
-
-   int randomIndex1=0;
-   int randomIndex2=0;
-   int randomIndex3=0;
-   bool isClick=false;
-   void randomIndex(){
-      randomIndex1=random.nextInt(4);
-      randomIndex2=random.nextInt(4);
-      randomIndex3=random.nextInt(4);
-
-   }
-
-   void calendarClick(){
-     isClick=true;
-     update();
-   }
-
-   void tableClick(){
-     isClick=false;
-     update();
-
-   }
-   bool setActiveCalendarClick(int index,int  indexCell){
-     bool disable=false;
-     if (listRowRandom.contains(index) && listCellActive[index] == indexCell) {
-       disable =true;
-     }
-     return disable;
-     update();
-   }
    void checkActiveCalendar(int index,int indexCell){
      listCellActive[index] = indexCell;
      print("Cell lits index "+ listCellActive[index].toString());
@@ -74,13 +40,6 @@ class PlanController extends GetxController{
    }
 
 
-  void randomListItem() {
-    for(int i=0;i<3;i++){
-      listRowRandom[i]=random.nextInt(listDataTable.length-1);
-    }
-      print("Random "+listRowRandom.toString());
-
-   }
 
 
    void checkActive(int indexCell,int indexRow){
@@ -120,13 +79,7 @@ class PlanController extends GetxController{
         color=Colors.white;
       }
 
-      if(isClick==true){
-        for(int i=0;i<listIndexCell.length;i++){
-          if(listIndexCell[i]==randomIndex1){
 
-          }
-        }
-      }
 
 
       return color;

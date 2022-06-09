@@ -45,10 +45,10 @@ class TablePlanUi extends StatelessWidget  {
   }
   Widget _buildCell(text, indexCell, indexRow) {
     return AbsorbPointer(
-      absorbing:controller.isClick==true?controller.setActiveCalendarClick(indexCell, indexRow): controller.setActive(indexCell, indexRow),
+      absorbing:controller.setActive(indexCell, indexRow),
       child: InkWell(
         onTap: () {
-          controller.tableClick();
+
           controller.checkActive(indexCell, indexRow);
           print("index  $indexCell --- indexCell $indexRow");
         },
@@ -56,7 +56,7 @@ class TablePlanUi extends StatelessWidget  {
             width: 70.0,
             height: 50,
             decoration: BoxDecoration(
-              color:controller.isClick==true?controller.setColorCalendarClick(indexCell, indexRow):controller.setColor(indexCell, indexRow),
+              color:controller.setColor(indexCell, indexRow),
               border: Border(
                 left: BorderSide(width: 0.5, color: Colors.blue),
                 right: BorderSide(width: 0.5, color: Colors.blue),

@@ -38,7 +38,7 @@ class ConfirmInfoScreen extends StatelessWidget {
                       textInputType: TextInputType.number,
                       borderColor: blue50,spaceLabelTextField: 10.0,
                       onchange: (value){
-                        controller.pin1.value = value;
+                        controller.edtPin.text = value;
                       },
                     ),
 
@@ -140,7 +140,7 @@ class ConfirmInfoScreen extends StatelessWidget {
                       textColor: white, width:
                       width, buttonColor: green,
                       onPressed: (){
-                        controller.setNoErr();
+                        controller.dismissErrorDialog();
                       })
                 ],
               ),

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
+import 'package:car_cleaning_demo/shared/shared.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sn_progress_dialog/progress_dialog.dart';
 
 class ConfirmInfoController extends GetxController{
-  var pin1 = "".obs;
+  final TAG="NFC";
   var isLoading = false;
   var data = "".obs;
   var errorValue="".obs;
@@ -28,17 +28,38 @@ class ConfirmInfoController extends GetxController{
     isLoading= false;
     update();
   }
-  void setNoErr(){
+  void dismissErrorDialog(){
     errorValue.value="";
     update();
   }
 
-  bool isValidate(){
-    return true;
+
+  void isValidate(){
+     if(edtName.text==""){
+       CommonWidget.toast("Please ! Enter your name");
+     }else if(edtEmail.text==""){
+       CommonWidget.toast("Please ! Enter your email");
+     }else if(edtBirthday.text==""){
+       CommonWidget.toast("Please ! Enter your birthday");
+     }
+     else if(edtAddress.text==""){
+       CommonWidget.toast("Please ! Enter your address");
+     }else if(Regex.isEmail(edtEmail.text)){
+       CommonWidget.toast("Email not ");
+     }
+     else{
+
+     }
   }
 
   void scanNfcSubmit(context) async {
-
+    if(edtPin.text==""){
+      CommonWidget.toast("Please ! Enter your pin code");
+      return;
+   }else if(edtPin.text.length!=4){
+      CommonWidget.toast("Pin code  4 number");
+      return;
+    }
     startLoading();
     try {
       var requestData = <String, String> {
@@ -46,9 +67,8 @@ class ConfirmInfoController extends GetxController{
         "pin2": "",
       };
       var dataRes = await platform.invokeMethod<String>("SCAN_NFC", requestData);
-      // print("data $dataRes + ${dataRes?.length.toString()}");
 
-       data.value = dataRes ?? "No data";
+      data.value = dataRes ?? "No data";
       if(data.value!=null && data.value!="{}"&& data.value!=""){
         var dataHashMap=jsonDecode( data.value);
         edtName.text=dataHashMap["name"];
@@ -62,15 +82,19 @@ class ConfirmInfoController extends GetxController{
       if (error is PlatformException) {
         // data.value = "error: ${error.message}";
         if(error.message=="This devide no suport nfc"){
-           errorValue.value="This devide no suport nfc";
-           update();
+          errorValue.value="This devide no suport nfc";
+          update();
         }
       } else {
-        data.value = error.toString();
+        errorValue.value="No can't scan data";
+        print("$TAG :"+data.value);
+        update();
+        // data.value = error.toString();
       }
       stopLoading();
       return;
     }
+
   }
   @override
   onClose(){
