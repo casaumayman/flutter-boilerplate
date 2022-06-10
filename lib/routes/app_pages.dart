@@ -1,9 +1,11 @@
 import 'package:car_cleaning_demo/modules/auth/auth.dart';
 import 'package:car_cleaning_demo/modules/calendar/calendar.dart';
 import 'package:car_cleaning_demo/modules/modules.dart';
+import 'package:car_cleaning_demo/modules/plan/controller/confirm_info_mail_controller.dart';
 import 'package:car_cleaning_demo/modules/plan/plan.dart';
 import 'package:car_cleaning_demo/modules/plan/plan_bingding.dart';
 import 'package:car_cleaning_demo/modules/plan/controller/select_plan_controller.dart';
+import 'package:car_cleaning_demo/modules/plan/screen/confirm_mail_screen.dart';
 import 'package:car_cleaning_demo/modules/test_nfc/test_nfc.dart';
 import 'package:get/get.dart';
 
@@ -57,5 +59,9 @@ class AppPages {
         name: Routes.TABLE_INFO_SCREEN,
         page: () => TableInfoScreen(),
         binding: BindingsBuilder(() => Get.lazyPut(() => TableInfoController()))),
+    GetPage(
+        name: Routes.CONFIRM_MAIl_SCREEN,
+        page: () => ConfirmMailScreen(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => ConfirmMailController()))),
   ];
 }

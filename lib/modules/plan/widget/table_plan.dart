@@ -29,7 +29,7 @@ class TablePlanUi extends StatelessWidget  {
           ),
         ),
         Expanded(
-            flex: 3,
+            flex: 5,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

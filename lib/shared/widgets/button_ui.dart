@@ -1,8 +1,9 @@
+import 'package:car_cleaning_demo/shared/utils/color.dart';
 import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
 import 'package:flutter/material.dart';
 
 class ButtonUI extends StatelessWidget {
-   ButtonUI({Key? key,required this.text,required this.textColor,required this.width, required this.buttonColor ,required this.onPressed}) : super(key: key);
+  ButtonUI({Key? key,required this.text, this.textColor:white,required this.width,  this.buttonColor:blue50 ,required this.onPressed}) : super(key: key);
   VoidCallback onPressed;
   String text;
   Color textColor;
