@@ -19,7 +19,8 @@ void main() async {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return
+      GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: true,
       initialRoute: Routes.SPLASH,

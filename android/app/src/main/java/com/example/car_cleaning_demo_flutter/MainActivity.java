@@ -90,7 +90,6 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
                                     result.error("",err,null);
                                 }else {
                                     Handler handler = new Handler(Looper.getMainLooper());
-
                                     handler.post(new Runnable() {
                                         @Override
                                         public void run() {

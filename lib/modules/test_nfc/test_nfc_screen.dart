@@ -8,7 +8,8 @@ class TestNFCScreen extends GetView<TestNFCController> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Obx(() => Scaffold(
+        child: Obx(() =>
+            Scaffold(
               appBar: AppBar(
                 title: Text("Test NFC Reader"),
               ),
@@ -52,13 +53,17 @@ class TestNFCScreen extends GetView<TestNFCController> {
                                 margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                               ),
                               ElevatedButton(
-                                  onPressed: controller.submit,
+                                  onPressed:(){
+                                    controller.startLoading();
+                                  },
                                   child: Text("Start scan NFC")),
                             ],
                           )),
                     ],
                     crossAxisAlignment: CrossAxisAlignment.center,
-                  )),
-            )));
+                  )
+              ),
+            )
+        ));
   }
 }
