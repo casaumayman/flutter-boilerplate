@@ -54,7 +54,7 @@ class TablePlanUi extends StatelessWidget  {
         },
         child: Container(
             width: 70.0,
-            height: 50,
+            height: 55.5,
             decoration: BoxDecoration(
               color:controller.setColor(indexCell, indexRow),
               border: Border(
@@ -87,7 +87,7 @@ class TablePlanUi extends StatelessWidget  {
   Widget _buildTitlePlan(text, textPrice) {
     return Container(
         width: double.infinity,
-        height: 50,
+        height: 55.5,
         decoration: BoxDecoration(
           color: Color(0xff60c3ed),
           border: Border(
@@ -95,21 +95,22 @@ class TablePlanUi extends StatelessWidget  {
             right: BorderSide(width: 0.5, color: Colors.blue),
           ),
         ),
-        child: Center(
-            child: Column(
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(fontSize: 16.0, color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  textPrice,
-                  style: TextStyle(fontSize: 16.0, color: Colors.redAccent),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            )));
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: TextStyle(fontSize: 15.0, color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              textPrice,
+              style: TextStyle(fontSize: 15.0, color: Colors.redAccent),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ));
   }
 
   Widget _buidBorderTable({width = 70.0}) {

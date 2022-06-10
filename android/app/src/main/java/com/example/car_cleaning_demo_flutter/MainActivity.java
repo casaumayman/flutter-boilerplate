@@ -70,14 +70,11 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
-//                            Log.d("MethodChannel","MethodChannel");
-//                            Toast.makeText(this, "MethodChannel", Toast.LENGTH_SHORT).show();
+
 
                             final Map<String, String> arguments = call.arguments();
                             if (call.method.equals(KEY_NATIVE)) {
-                                Log.d("KEY_NATIVE","KEY_NATIVE");
-
-                                pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
+                                 pin1 = arguments.get("pin1") == null ? "" : arguments.get("pin1");
                                  pin2 = arguments.get("pin2") == null ? "" : arguments.get("pin2");
                                  scanNfc=true;
                                  onResume();
@@ -86,24 +83,26 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
 //                                res.put("pin1", "NGUYEN VAN A");
 //                                res.put("pin2", "NGUYEN VAN B");
 
-                                if(err!=null){
-                                    result.error("",err,null);
-                                }else {
-                                    Handler handler = new Handler(Looper.getMainLooper());
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
+                                    if(err!=null){
+                                       result.error("",err,null);
+                                    }else {
+                                        Handler handler = new Handler(Looper.getMainLooper());
+                                        handler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
 //                                            HashMap<String,String> h=new HashMap<>();
 //                                            h.put("name","a");
 //                                            h.put("address","Ha noi");
 //                                            h.put("birthDate","1313");
 
-                                            String jsonString = new JSONObject(hashMap).toString();
-                                            result.success(jsonString);
-                                        }
-                                    });
+                                                String jsonString = new JSONObject(hashMap).toString();
+                                                result.success(jsonString);
+                                            }
+                                        });
+                                    }
 
-                                }
+
+
 
 
                             }
@@ -205,11 +204,11 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
         enableNfc();
 //        Log.d(TAG, getClass().getSimpleName() + "#onCreate(" + savedInstanceState + ")");
         Log.d(TAG, getClass().getSimpleName() + "#RunonResume()");
-        super.onResume();
+
         invalidateOptionsMenu();
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
-           setErr("This devide no suport nfc");
+            setErr("This devide no suport nfc");
             return ;
         }
        if(enableNFC==true){
@@ -286,13 +285,11 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     }
     protected  void getHasData(HashMap<String,String> data){
         Handler handler = new Handler(Looper.getMainLooper());
-
         handler.post(new Runnable() {
             @Override
             public void run() {
                 hashMap=data;
                 Toast.makeText(MainActivity.this,"Data hash map : "+ data.toString(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }

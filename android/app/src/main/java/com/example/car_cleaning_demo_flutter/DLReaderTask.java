@@ -46,7 +46,7 @@ public class DLReaderTask implements Runnable {
     private String pin2;
     private MainActivity activity;
 
-    HashMap<String,String> hashMap=new HashMap<String,String>();
+    HashMap<String,String> hashMap=new HashMap<>();
 
 
     public DLReaderTask(MainActivity activity, Tag nfcTag) {
@@ -58,32 +58,11 @@ public class DLReaderTask implements Runnable {
          activity.print(msg);
     }
 
-    private void sendData(){
-        activity.getHasData(hashMap);
-    }
-
     public void run() {
         Log.d(TAG, getClass().getSimpleName() + "#run()");
-//        this.activity.clear();
-//        pin1 = activity.getPin1();
-//        pin2 = activity.getPin2();
+
         pin1 = activity.getPin1();
         pin2 = activity.getPin2();
-
-//        activity.hideKeyboard();
-
-//        publishProgress("# 読み取り開始、カードを離さないでください");
-        // 読み取り中ダイアログを表示
-//        ProgressDialogFragment progress = new ProgressDialogFragment();
-//        progress.show(activity., "progress");
-//
-
-
-
-//        ProgressDialog progressdialog = new ProgressDialog(activity);
-//        progressdialog.setMessage("Loading....");
-//        progressdialog.show();
-
 
         try {
             JeidReader reader = new JeidReader(this.nfcTag);
@@ -126,17 +105,17 @@ public class DLReaderTask implements Runnable {
                 return;
             }
 
-            if (!pin2.isEmpty()) {
-                if (!pinSetting.isPinSet()) {
-                    pin2 = DPIN;
-                }
-                try {
-                    ap.verifyPin2(pin2);
-                } catch (InvalidPinException e) {
-                    activity.showInvalidPinDialog("暗証番号2", e);
-                    return;
-                }
-            }
+//            if (!pin2.isEmpty()) {
+//                if (!pinSetting.isPinSet()) {
+//                    pin2 = DPIN;
+//                }
+//                try {
+//                    ap.verifyPin2(pin2);
+//                } catch (InvalidPinException e) {
+//                    activity.showInvalidPinDialog("暗証番号2", e);
+//                    return;
+//                }
+//            }
             // PINを入力した後、DriverLicenseAP#readFiles()を実行すると、
             // 入力されたPINで読み出し可能なファイルをすべて読み出します。
             // PIN1のみを入力した場合、PIN2の入力が必要なファイル(本籍など)は読み出しません。
@@ -229,7 +208,7 @@ public class DLReaderTask implements Runnable {
             hashMap.put("expireDate",expireDate.toString());
             hashMap.put("licenseNumber",entries.getLicenseNumber());
             hashMap.put("changedEntries",changedEntries.toString());
-            sendData();
+            activity.getHasData(hashMap);
 
             JSONArray changesObj = new JSONArray();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
@@ -342,6 +321,7 @@ public class DLReaderTask implements Runnable {
             // オブジェクトをJSONに追加
             obj.put("dl-changes", changesObj);
 //            progressdialog.dismiss();
+            activity.enableNFC=false;
 
 
             // Viewerを起動
@@ -354,10 +334,9 @@ public class DLReaderTask implements Runnable {
 //                intent.setAction(Intent.ACTION_RUN);
 //                intent.putExtra("route", "/reader_page");
 //            activity.startActivity(intent);
-            activity.enableNFC=false;
         } catch (Exception e) {
             Log.e(TAG, "error", e);
-            activity.setErr(e.toString());
+//            activity.setErr(e.toString());
             activity.enableNFC=false;
 
             publishProgress("エラー: " + e);
