@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sn_progress_dialog/progress_dialog.dart';
 
 class ConfirmInfoController extends GetxController{
   var pin1 = "".obs;

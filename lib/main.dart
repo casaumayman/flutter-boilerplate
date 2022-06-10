@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:uni_links/uni_links.dart';
 
 import 'app_binding.dart';
 import 'di.dart';
@@ -15,7 +13,6 @@ import 'theme/theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DenpendencyInjection.init();
-  await initDeepLink();
   initializeDateFormatting().then((_) => runApp(App()));
 }
 
@@ -36,15 +33,5 @@ class App extends StatelessWidget {
       fallbackLocale: TranslationService.fallbackLocale,
       translations: TranslationService(),
     );
-  }
-}
-
-Future<void> initDeepLink() async {
-  try {
-    final initialLink = await getInitialLink();
-    print('initial link: $initialLink');
-  } on PlatformException {
-    // Handle exception by warning the user their action did not succeed
-    // return?
   }
 }

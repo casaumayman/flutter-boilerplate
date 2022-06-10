@@ -26,6 +26,19 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLName</key>
+          <string>https://car-cleaning-system.web.app/ios</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>carcleaning</string>
+          </array>
+        </dict>
+    </array>
 	<key>NFCReaderUsageDescription</key>
 	<string>For reading ID card.</string>
 	<key>UILaunchStoryboardName</key>
