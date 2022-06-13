@@ -48,24 +48,37 @@ class ConfirmInfoScreen extends StatelessWidget {
                     })),
                     CommonWidget.rowHeight20(),
                     //name
-                    TextFieldUI(
-                        controller: controller.edtName,
-                        hintText: "",
-                        labelText: "名前",
-                        borderColor: blue50,spaceLabelTextField: 10.0),
+                    InkWell(
+                      child: AbsorbPointer(
+                        absorbing: false,
+                        child: TextFieldUI(
+                            controller: controller.edtName,
+                            hintText: "",
+                            labelText: "名前",
+                            borderColor: blue50,spaceLabelTextField: 10.0),
+                      ),
+                    ),
                     CommonWidget.rowHeight20(),
                     // birthDay
-                    TextFieldUI(
-                        controller: controller.edtBirthday,
-                        hintText: "", labelText: "お誕生日",  borderColor: blue50,spaceLabelTextField: 10.0),
+                    AbsorbPointer(
+                      absorbing: false,
+                      child: TextFieldUI(
+                          controller: controller.edtBirthday,
+                          hintText: "", labelText: "お誕生日",  borderColor: blue50,spaceLabelTextField: 10.0),
+                    ),
                     CommonWidget.rowHeight20(),
                     //address
-                    TextFieldUI(
-                        controller: controller.edtAddress,
-                        hintText: "", labelText: "住所",  borderColor: blue50,spaceLabelTextField: 10.0),
+                    AbsorbPointer(
+                      absorbing: false,
+                      child: TextFieldUI(
+                          controller: controller.edtAddress,
+                          hintText: "", labelText: "住所",  borderColor: blue50,spaceLabelTextField: 10.0),
+                    ),
                     CommonWidget.rowHeight20(),
                     // email
-                    TextFieldUI(hintText: "", labelText: "Eメール",  borderColor: blue50,spaceLabelTextField: 10.0),
+                    TextFieldUI(
+                      controller: controller.edtEmail,
+                        hintText: "", labelText: "Eメール",  borderColor: blue50,spaceLabelTextField: 10.0),
                     CommonWidget.rowHeight20(),
                     ButtonUI(text: "洗車場所", textColor: white, width: 150.0, buttonColor: blue50, onPressed: (){}),
                     TextFieldUI(hintText: "", labelText: "", borderColor: green,spaceLabelTextField: 0.0),
@@ -114,7 +127,7 @@ class ConfirmInfoScreen extends StatelessWidget {
                           }),
                           ButtonUI(text: "次へ", textColor: white,buttonColor: blue50,width: 100, onPressed: (
                               ){
-                            Get.toNamed(Routes.TABLE_INFO_SCREEN);
+                           controller.register();
                           }),
                         ],
                       ),

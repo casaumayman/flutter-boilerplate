@@ -170,8 +170,6 @@ class ProductDataSource extends DataGridSource {
               // employeeData[index].isAvailable = value!;
               String dataPrice = employeeData[index].price;
               controller.checkPrice(value, int.parse(dataPrice.substring(0,dataPrice.length-1)));
-              // value==true?controller.priceTotal +=int.parse(dataPrice.substring(0,dataPrice.length-1)):controller.priceTotal -=int.parse(dataPrice.substring(0,dataPrice.length-1));
-             // controller.getPrice();
               row.getCells()[3] =
                   DataGridCell(value: value, columnName: 'isCheck');
                    notifyDataSourceListeners(

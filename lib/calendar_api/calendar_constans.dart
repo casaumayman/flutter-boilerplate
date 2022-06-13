@@ -1,3 +1,3 @@
 class ApiConstants {
-  static const baseUrl = 'https://jsonplaceholder.typicode.com';
+  static const baseUrl = 'https://car-cleaning-system.herokuapp.com';
 }

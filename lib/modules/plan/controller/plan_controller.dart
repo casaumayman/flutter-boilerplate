@@ -13,8 +13,6 @@ class PlanController extends GetxController{
    Color colorTable=white;
 
 
-
-
    void checkActiveCalendar(int index,int indexCell){
      listCellActive[index] = indexCell;
      print("Cell lits index "+ listCellActive[index].toString());

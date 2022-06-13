@@ -6,8 +6,8 @@ import 'package:get/get_connect/http/src/request/request.dart';
 
 FutureOr<dynamic> UserResponseInterceptor(
     Request request, Response response) async {
-
-  if (response.statusCode != 200) {
+   print("Status code ${response.statusCode}");
+  if ((response.statusCode ?? 0) < 200 || (response.statusCode ?? 0) > 299) {
     handleErrorStatus(response);
     return;
   }
@@ -22,7 +22,9 @@ void handleErrorStatus(Response response) {
       CommonWidget.toast(message.error);
       break;
     default:
+      final message = ErrorResponse.fromJson(response.body);
+      CommonWidget.toast(message.error);
+      break;
   }
-
   return;
 }

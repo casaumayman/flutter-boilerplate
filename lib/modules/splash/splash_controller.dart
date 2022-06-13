@@ -7,6 +7,7 @@ import 'package:uni_links/uni_links.dart';
 
 class SplashController extends GetxController {
   StreamSubscription? _sub;
+  bool openByLink = false;
 
   @override
   void onReady() async {
@@ -15,6 +16,9 @@ class SplashController extends GetxController {
     await Future.delayed(Duration(milliseconds: 2000));
     // var storage = Get.find<SharedPreferences>();
     initUniLinks();
+    if (openByLink) {
+      return;
+    }
     try {
       Get.toNamed(Routes.CALENDAR_HOME);
       // if (storage.getString(StorageConstants.token) != null) {
@@ -44,6 +48,10 @@ class SplashController extends GetxController {
 
   void handleLink(String? link) {
     print("Link open app: $link");
+    if (link == "carcleaning://reserve") {
+      openByLink = true;
+      Get.toNamed(Routes.CONFIRM_INFO_USER_SCREEN);
+    }
   }
 
   @override

@@ -154,7 +154,7 @@ class CalendarHome extends GetView<CalendarController> {
           ),
           borderRadius: BorderRadius.circular(8.0)),
       child: Center(
-        child:CommonWidget.TextUI(text: "初回クーポン配布！！",fontSize: 18.0),
+        child:CommonWidget.TextUI(text: "初回クーポン配布！！",fontSize: 16.0),
       ),
     );
   }
@@ -162,7 +162,7 @@ class CalendarHome extends GetView<CalendarController> {
   Widget buildExplain() {
     return Column(
       children: [
-        CommonWidget.TextUI(text: "水なし洗車とは？",fontSize: 18.0),
+        CommonWidget.TextUI(text: "水なし洗車とは？",fontSize: 16.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

@@ -14,7 +14,6 @@ class ConfirmMailScreen extends GetView<ConfirmMailController> {
         appBar: CommonWidget.AppBarUI(title: "Email"),
         body: GetBuilder<ConfirmMailController>(
           initState: (S) {
-            controller.getUserData();
           },
           builder: (_) =>
               Container(
@@ -22,25 +21,13 @@ class ConfirmMailScreen extends GetView<ConfirmMailController> {
                 child: Column(
                   children: [
                     CommonWidget.TextUI(
-                      text: " 予約に成功しました。確認メールはexample@gmail.comに送信されました。",
+                      text: " 予約に成功しました。確認メールは ${controller.email}に送信されました。",
                       fontSize: 18,
                     ),
                     ButtonUI(text: "Home", width: 200.0, onPressed: () {
                       Get.toNamed(Routes.CALENDAR_HOME);
                     }),
-                    // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   itemCount: controller.list.length,
-                    //   itemBuilder: (context, index) {
-                    //     return Column(
-                    //       children: [
-                    //         Text("${controller.list[index].firstName}"),
-                    //         Text("${controller.list[index].lastName}"),
-                    //         Text("${controller.list[index].email}"),
-                    //       ],
-                    //     );
-                    //   },
-                    // ),
+
                   ],
                 ),
               ),

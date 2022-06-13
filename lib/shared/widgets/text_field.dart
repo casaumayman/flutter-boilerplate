@@ -10,6 +10,7 @@ class TextFieldUI extends StatelessWidget {
      required this.labelText,
      this.maxLine=1,
      this.obscureText=false,
+     this.enable=true,
      required this.borderColor,
      required this.spaceLabelTextField, this.initialValue="",this.onchange}) : super(key: key);
   Color borderColor;
@@ -22,6 +23,7 @@ class TextFieldUI extends StatelessWidget {
   TextEditingController? controller;
   TextInputType? textInputType;
   bool obscureText;
+  bool enable;
 
 
   @override
@@ -37,6 +39,8 @@ class TextFieldUI extends StatelessWidget {
           obscureText: this.obscureText,
           maxLines: maxLine,
           onChanged:onchange,
+          enabled: this.enable,
+
           textAlignVertical: TextAlignVertical.center,
           keyboardType:textInputType,
           autocorrect: true,

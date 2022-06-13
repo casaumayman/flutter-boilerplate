@@ -23,9 +23,7 @@ class ConfirmInfoUserScreen extends StatelessWidget {
             child: TableInfoUser(),
           ),
           CommonWidget.rowHeight30(),
-          ButtonUI(text: "予約確定", textColor: white, width: 150.0, buttonColor: red, onPressed: (){
-            Get.back();
-          }),
+
           CommonWidget.rowHeight5(),
           ButtonUI(text: "キャンセル", textColor: black50, width: 150.0, buttonColor: grey, onPressed: (){
             showDialog(

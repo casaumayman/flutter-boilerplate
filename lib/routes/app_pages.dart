@@ -56,11 +56,11 @@ class AppPages {
     GetPage(
         name: Routes.CONFIRM_INFO_SCREEN,
         page: () => ConfirmInfoScreen(),
-        binding: BindingsBuilder(() => Get.lazyPut(() => ConfirmInfoController()))),
+        binding: BindingsBuilder(() => Get.lazyPut(() => ConfirmInfoController(apiRepository: Get.find())))),
     GetPage(
         name: Routes.TABLE_INFO_SCREEN,
         page: () => TableInfoScreen(),
-        binding: BindingsBuilder(() => Get.lazyPut(() => TableInfoController()))),
+        binding: BindingsBuilder(() => Get.lazyPut(() => TableInfoController(apiRepository: Get.find())))),
     GetPage(
         name: Routes.CONFIRM_INFO_USER_SCREEN,
         page: () => ConfirmInfoUserScreen(),
@@ -69,7 +69,7 @@ class AppPages {
         name: Routes.CONFIRM_MAIl_SCREEN,
         page: () => ConfirmMailScreen(),
         binding: BindingsBuilder(() => Get.lazyPut(() => ConfirmMailController(
-            apiRepository: Get.find()
+
         )))),
   ];
 }

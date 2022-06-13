@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:car_cleaning_demo/models/models.dart';
 import 'package:car_cleaning_demo/models/response/users_response.dart';
 import 'package:car_cleaning_demo/models/user.dart';
@@ -32,10 +33,5 @@ class ApiRepository {
     }
   }
   
-  Future<User?> getApiUser()async{
-    final res=await apiProvider.getApi("https://jsonplaceholder.typicode.com/users");
-    if(res.status==200){
-      return User.fromJson(res.body);
-    }
-  }
+
 }

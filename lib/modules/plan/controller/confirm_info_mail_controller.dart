@@ -9,20 +9,9 @@ import 'package:get/get.dart';
 import '../../../models/response/users_response.dart';
 
 class ConfirmMailController extends GetxController {
-  final UserApiRepository apiRepository;
-
-  ConfirmMailController({required this.apiRepository});
-
-  List<Datum> list = <Datum>[];
-  List<User> listUser = <User>[];
+    var  email=Get.arguments;
 
 
 
-  getUserData() async{
-    final data=apiRepository.getApiUser();
-    data.then((value) => {
-       listUser!=value,
-      print(listUser.length)
-    });
-  }
+
 }
