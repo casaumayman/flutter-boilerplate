@@ -80,10 +80,11 @@ class ConfirmInfoScreen extends StatelessWidget {
                               children: [
                                 Checkbox(
                                     activeColor: blue50,
-                                    value:true, onChanged: (value){
-                                  value!=value;
+                                    value:controller.checkboxOne,
+                                    onChanged: (value){
+                                      controller.getCheckBoxOne(value!);
                                 }),
-                                CommonWidget.TextUI(text: "立会いを希望する")
+                                CommonWidget.TextUI(text: "立会いを希望する",fontSize: 14.0)
                               ],
                             ),
                             CommonWidget.rowHeight5(),
@@ -91,17 +92,19 @@ class ConfirmInfoScreen extends StatelessWidget {
                               children: [
                                 Checkbox(
                                     activeColor: blue50,
-                                    value:true,
+                                    value:controller.checkboxTwo,
                                     onChanged: (value){
-                                      value!=value;
+                                      controller.getCheckBoxTwo(value!);
+
                                     }),
-                                CommonWidget.TextUI(text: "規約に同意する")
+                                CommonWidget.TextUI(text: "規約に同意する",fontSize: 14.0)
                               ],
                             )
                           ],
                         ),
                       ),
-                    ),              Padding(
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

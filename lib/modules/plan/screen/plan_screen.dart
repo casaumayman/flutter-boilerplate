@@ -59,13 +59,16 @@ class PlanScreen extends GetView<PlanController> {
 
   Widget _buildNotePlan() {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        children: [
-          _buildSubNote(Colors.white, "選択できる"),
-          _buildSubNote(Colors.yellow, "選択された"),
-          _buildSubNote(Colors.black45, "選択できない"),
-        ],
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            _buildSubNote(Colors.white, "選択できる"),
+            _buildSubNote(Colors.yellow, "選択された"),
+            _buildSubNote(Colors.black45, "選択できない"),
+          ],
+        ),
       ),
     );
   }
@@ -74,8 +77,8 @@ class PlanScreen extends GetView<PlanController> {
     return Row(
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 35,
+          height: 35,
           decoration: BoxDecoration(
               color: color,
               border: Border.all(
@@ -84,7 +87,7 @@ class PlanScreen extends GetView<PlanController> {
               )),
         ),
         CommonWidget.rowWidth5(),
-        Text(content),
+        CommonWidget.TextUI(text: content,fontSize: 14.0),
         CommonWidget.rowWidth10(),
       ],
     );

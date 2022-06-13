@@ -202,6 +202,8 @@ public class MainActivity extends FlutterActivity implements TagDiscoveredListen
     protected void onResume() {
         super.onResume();
         enableNfc();
+        getPin1();
+        getPin2();
 //        Log.d(TAG, getClass().getSimpleName() + "#onCreate(" + savedInstanceState + ")");
         Log.d(TAG, getClass().getSimpleName() + "#RunonResume()");
 

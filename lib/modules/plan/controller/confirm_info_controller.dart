@@ -10,6 +10,8 @@ class ConfirmInfoController extends GetxController{
   var isLoading = false;
   var data = "".obs;
   var errorValue="".obs;
+  var checkboxOne=false;
+  var checkboxTwo=false;
 
   final platform = MethodChannel("com.example.car_cleaning_demo_flutter.chanel");
   var edtPin=TextEditingController();
@@ -31,6 +33,16 @@ class ConfirmInfoController extends GetxController{
   void dismissErrorDialog(){
     errorValue.value="";
     update();
+  }
+
+  bool getCheckBoxOne(bool checkBoxOne){
+    update();
+    return this.checkboxOne=checkBoxOne;
+  }
+  bool getCheckBoxTwo(bool checkBoxTwo){
+    update();
+    return this.checkboxTwo=checkBoxTwo;
+
   }
 
 

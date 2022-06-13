@@ -14,6 +14,7 @@ abstract class Routes {
   static const CONFIRM_INFO_SCREEN = '/confirm_info_screen';
   static const TABLE_INFO_SCREEN = '/table_info_screen';
   static const CONFIRM_MAIl_SCREEN = '/confirm_mail_screen';
+  static const CONFIRM_INFO_USER_SCREEN = '/confirm_info_user_screen';
 
   static const TEST_NFC = '/test_nfc';
 }
