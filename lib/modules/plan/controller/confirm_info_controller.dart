@@ -68,6 +68,7 @@ class ConfirmInfoController extends GetxController {
         );
         stopLoading();
         Get.toNamed(Routes.TABLE_INFO_SCREEN, arguments: [userResponse!.id,userResponse.email] );
+        resetData();
       }catch(e){
         stopLoading();
         CommonWidget.toast("Đã có lỗi xảy ra...");
@@ -143,6 +144,14 @@ class ConfirmInfoController extends GetxController {
       stopLoading();
       return;
     }
+  }
+
+  void resetData() {
+    edtName.text = "";
+    edtPin.text = "";
+    edtBirthday.text = "";
+    edtAddress.text = "";
+    edtEmail.text = "";
   }
 
   @override

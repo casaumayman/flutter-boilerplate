@@ -20,19 +20,24 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      enableLog: true,
-      initialRoute: Routes.SPLASH,
-      defaultTransition: Transition.fade,
-      getPages: AppPages.routes,
-      initialBinding: AppBinding(),
-      smartManagement: SmartManagement.keepFactory,
-      title: 'Car cleaning demo',
-      theme: ThemeConfig.lightTheme,
-      locale: TranslationService.locale,
-      fallbackLocale: TranslationService.fallbackLocale,
-      translations: TranslationService(),
-    );
+      GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          enableLog: true,
+          initialRoute: Routes.SPLASH,
+          defaultTransition: Transition.fade,
+          getPages: AppPages.routes,
+          initialBinding: AppBinding(),
+          smartManagement: SmartManagement.keepFactory,
+          title: 'Car cleaning demo',
+          theme: ThemeConfig.lightTheme,
+          locale: TranslationService.locale,
+          fallbackLocale: TranslationService.fallbackLocale,
+          translations: TranslationService(),
+        ),
+      );
   }
 }
