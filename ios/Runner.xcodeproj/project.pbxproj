@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,6 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		FF00F3AF283C84B100E9D034 /* libjeid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF00F3AD283C847D00E9D034 /* libjeid.xcframework */; };
-		FF00F3B3283C84D900E9D034 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61D01F658028303A971D3B4 /* Pods_Runner.framework */; };
-		FF00F3B6283C8A6600E9D034 /* NFCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00F3B5283C8A6600E9D034 /* NFCReader.swift */; };
 		FFE9B73B28505620006AD2D4 /* Runner.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FF00F3B7283CC21900E9D034 /* Runner.entitlements */; };
 /* End PBXBuildFile section */
 
@@ -36,9 +33,6 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D61D01F658028303A971D3B4 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF00F3AD283C847D00E9D034 /* libjeid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libjeid.xcframework; path = Frameworks/libjeid.xcframework; sourceTree = "<group>"; };
-		FF00F3B5283C8A6600E9D034 /* NFCReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReader.swift; sourceTree = "<group>"; };
 		FF00F3B7283CC21900E9D034 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,8 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF00F3B3283C84D900E9D034 /* Pods_Runner.framework in Frameworks */,
-				FF00F3AF283C84B100E9D034 /* libjeid.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +75,6 @@
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
 				3ACFBD8CCEF51F71892470C7 /* Pods */,
-				D5663C50E7DF1BD5A11C9068 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,18 +98,8 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
-				FF00F3B5283C8A6600E9D034 /* NFCReader.swift */,
 			);
 			path = Runner;
-			sourceTree = "<group>";
-		};
-		D5663C50E7DF1BD5A11C9068 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF00F3AD283C847D00E9D034 /* libjeid.xcframework */,
-				D61D01F658028303A971D3B4 /* Pods_Runner.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +251,6 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
-				FF00F3B6283C8A6600E9D034 /* NFCReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
