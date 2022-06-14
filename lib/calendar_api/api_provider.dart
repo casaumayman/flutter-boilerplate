@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
-import 'package:car_cleaning_demo/api/base_provider.dart';
-import 'package:car_cleaning_demo/calendar_api/base_provider.dart';
-import 'package:car_cleaning_demo/models/models.dart';
-import 'package:car_cleaning_demo/models/user.dart';
-import 'package:car_cleaning_demo/models/user/UserRequest.dart';
-import 'package:car_cleaning_demo/models/user/UserResponse.dart';
-import 'package:car_cleaning_demo/models/user/user_id.dart';
+import 'package:bluetooth_app/api/base_provider.dart';
+import 'package:bluetooth_app/calendar_api/base_provider.dart';
+import 'package:bluetooth_app/models/models.dart';
+import 'package:bluetooth_app/models/user.dart';
+import 'package:bluetooth_app/models/user/UserRequest.dart';
+import 'package:bluetooth_app/models/user/UserResponse.dart';
+import 'package:bluetooth_app/models/user/user_id.dart';
 import 'package:get/get.dart';
 
 class UserApiProvider extends UserBaseProvider {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:car_cleaning_demo/shared/shared.dart';
+import 'package:bluetooth_app/shared/shared.dart';
 
 class SplashScreen extends StatelessWidget {
   @override

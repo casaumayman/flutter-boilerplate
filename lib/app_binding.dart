@@ -1,7 +1,7 @@
 
-import 'package:car_cleaning_demo/api/api.dart';
-import 'package:car_cleaning_demo/calendar_api/api_provider.dart';
-import 'package:car_cleaning_demo/calendar_api/api_repository.dart';
+import 'package:bluetooth_app/api/api.dart';
+import 'package:bluetooth_app/calendar_api/api_provider.dart';
+import 'package:bluetooth_app/calendar_api/api_repository.dart';
 import 'package:get/get.dart';
 
 

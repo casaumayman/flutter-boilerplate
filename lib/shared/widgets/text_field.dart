@@ -1,5 +1,5 @@
-import 'package:car_cleaning_demo/shared/utils/color.dart';
-import 'package:car_cleaning_demo/shared/utils/common_widget.dart';
+import 'package:bluetooth_app/shared/utils/color.dart';
+import 'package:bluetooth_app/shared/utils/common_widget.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldUI extends StatelessWidget {

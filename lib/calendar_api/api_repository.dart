@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi';
 
-import 'package:car_cleaning_demo/models/user.dart';
-import 'package:car_cleaning_demo/models/user/UserRequest.dart';
-import 'package:car_cleaning_demo/models/user/UserResponse.dart';
-import 'package:car_cleaning_demo/models/user/user_id.dart';
+import 'package:bluetooth_app/models/user.dart';
+import 'package:bluetooth_app/models/user/UserRequest.dart';
+import 'package:bluetooth_app/models/user/UserResponse.dart';
+import 'package:bluetooth_app/models/user/user_id.dart';
 
 import 'api.dart';
 

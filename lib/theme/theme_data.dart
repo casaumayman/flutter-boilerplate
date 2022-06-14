@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:car_cleaning_demo/shared/shared.dart';
+import 'package:bluetooth_app/shared/shared.dart';
 
 class ThemeConfig {
   static ThemeData createTheme({

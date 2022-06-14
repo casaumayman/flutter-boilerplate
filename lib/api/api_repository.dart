@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:car_cleaning_demo/models/models.dart';
-import 'package:car_cleaning_demo/models/response/users_response.dart';
-import 'package:car_cleaning_demo/models/user.dart';
+import 'package:bluetooth_app/models/models.dart';
+import 'package:bluetooth_app/models/response/users_response.dart';
+import 'package:bluetooth_app/models/user.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
 import 'api.dart';

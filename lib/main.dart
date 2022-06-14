@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
 import 'app_binding.dart';
 import 'di.dart';
 import 'lang/lang.dart';
@@ -32,7 +29,7 @@ class App extends StatelessWidget {
           getPages: AppPages.routes,
           initialBinding: AppBinding(),
           smartManagement: SmartManagement.keepFactory,
-          title: 'Car cleaning demo',
+          title: 'Bluetooth app',
           theme: ThemeConfig.lightTheme,
           locale: TranslationService.locale,
           fallbackLocale: TranslationService.fallbackLocale,

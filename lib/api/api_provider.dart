@@ -1,5 +1,5 @@
-import 'package:car_cleaning_demo/api/base_provider.dart';
-import 'package:car_cleaning_demo/models/models.dart';
+import 'package:bluetooth_app/api/base_provider.dart';
+import 'package:bluetooth_app/models/models.dart';
 import 'package:get/get.dart';
 
 class ApiProvider extends BaseProvider {

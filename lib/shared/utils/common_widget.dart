@@ -1,4 +1,4 @@
-import 'package:car_cleaning_demo/shared/utils/color.dart';
+import 'package:bluetooth_app/shared/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

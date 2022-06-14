@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:car_cleaning_demo/models/models.dart';
-import 'package:car_cleaning_demo/shared/shared.dart';
+import 'package:bluetooth_app/models/models.dart';
+import 'package:bluetooth_app/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
